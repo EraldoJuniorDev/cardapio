@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaCartPlus } from "react-icons/fa";
 interface ProductParams {
     productImage: string
@@ -15,8 +16,12 @@ export default function Product({ productImage, productName, productDescription,
 
             {/* IMAGEM DO PRODUTO */}
 
-            <img src={productImage} alt={productName}
-                className="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"></img>
+                <Image
+                className="rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                src={productImage}
+                alt={productName}
+                width={112}
+                height={112}/>
 
             <div className="w-full">
 

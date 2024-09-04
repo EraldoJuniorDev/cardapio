@@ -1,14 +1,20 @@
+import Image from "next/image"
+
 export default function Header() {
     return (
         <header className="w-full h-[420px] bg-home bg-cover bg-center">
 
             <div className="w-full h-full flex flex-col justify-center items-center">
-
-                <img src="/images/logo.png" alt="Logo Guaxuma's Burguer"
-                    className="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"></img>
+                
+                <Image
+                    className="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
+                    src="/images/logo.png"
+                    alt="Logo Guaxuma's Burguer"
+                    width={200}
+                    height={200} />
 
                 <h1 className="text-4x1 mt-4 mb-2 font-bold text-white">
-                    Guaxuma's Burguer
+                    Guaxuma&apos;s Burguer
                 </h1>
 
                 <span className="text-white font-medium">
