@@ -12,12 +12,12 @@ export default function Product({ productImage, productName, productDescription,
 
         // CONTAINER DO PRODUTO
 
-        <div className="flex gap-4 rounded p-5 bg-gray-100 shadow-inner hover:scale-105 hover:duration-300">
+        <div className="flex gap-4 rounded p-5 bg-gray-100 shadow-inner 2xl:hover:scale-105 hover:duration-300">
 
             {/* IMAGEM DO PRODUTO */}
 
                 <Image
-                className="rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                className="rounded-md hover:scale-105 hover:-rotate-2 duration-300"
                 src={productImage}
                 alt={productName}
                 width={112}
