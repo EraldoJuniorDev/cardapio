@@ -12,7 +12,7 @@ export default function Product({ productImage, productName, productDescription,
 
         // CONTAINER DO PRODUTO
 
-        <div className="flex gap-4 rounded p-5 bg-gray-100 shadow-inner 2xl:hover:scale-105 hover:duration-300">
+        <div className="flex items-center gap-4 rounded bg-gray-100 shadow-inner">
 
             {/* IMAGEM DO PRODUTO */}
 
@@ -20,8 +20,8 @@ export default function Product({ productImage, productName, productDescription,
                 className="rounded-md hover:scale-105 hover:-rotate-2 duration-300"
                 src={productImage}
                 alt={productName}
-                width={112}
-                height={112}/>
+                width={150}
+                height={150}/>
 
             <div className="w-full">
 
@@ -33,7 +33,7 @@ export default function Product({ productImage, productName, productDescription,
 
                 <p className="text-sm">{productDescription}</p>
 
-                <div className="flex items-center gap-2 justify-between mt-3">
+                <div className="flex items-center gap-2 justify-between mt-3 pr-3">
 
                     {/* PREÇO DO PRODUTO */}
 
