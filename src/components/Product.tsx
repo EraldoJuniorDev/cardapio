@@ -12,7 +12,7 @@ export default function Product({ productImage, productName, productDescription,
 
         // CONTAINER DO PRODUTO
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 rounded p-5 bg-gray-100 shadow-inner hover:scale-105 hover:duration-300">
 
             {/* IMAGEM DO PRODUTO */}
 
