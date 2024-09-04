@@ -17,7 +17,7 @@ export default function Header() {
                     Guaxuma&apos;s Burguer
                 </h1>
 
-                <span className="text-white font-medium">
+                <span className="text-white text-center font-medium">
                     Rua C-54, Avenida Guaxuma - Benedito Bentes - AL
                 </span>
 
