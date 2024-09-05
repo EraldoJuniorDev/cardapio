@@ -14,7 +14,9 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
         <div
             className=" w-full h-full fixed z-[99] flex items-center justify-center top-0 right-0 bottom-0 left-0">
 
-            
+            <div
+            className="bg-[rgba(0,0,0,0.8)] w-[100vw] h-[100vh] fixed"
+            onClick={onClose}></div>
 
             <div className="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px] absolute ">
 
@@ -36,7 +38,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 <input type="text"
                     placeholder="Digite seu endereço completo..."
                     id="adress"
-                    className="w-full border-2 rounded my-1" />
+                    className="w-full border-2 outline-green-500 rounded my-1 pl-[5px] py-1" />
 
                 <p className="text-red-500 hidden" id="adress-warn">Digite seu endereço completo!</p>
 

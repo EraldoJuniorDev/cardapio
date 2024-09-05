@@ -7,7 +7,7 @@ export default function Home() {
 
       {/* CONTAINER DOS HAMBÚRGUERES */}
 
-      <h2 className="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+      <h2 className="text-xl md:text-2xl font-bold text-center mt-9 mb-6">
         Conheça nosso Menu
       </h2>
 
@@ -67,7 +67,7 @@ export default function Home() {
 
       {/* CONTAINER DAS BEBIDAS */}
 
-      <h2 className="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">Bebidas</h2>
+      <h2 className="text-xl md:text-2xl font-bold text-center mt-9 mb-6">Bebidas</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mx-auto max-w-7xl px-2 mb-16" id="menu">
 
