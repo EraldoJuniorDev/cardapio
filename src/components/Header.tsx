@@ -21,7 +21,7 @@ export default function Header() {
                     Rua C-54, Avenida Guaxuma - Benedito Bentes - AL
                 </span>
 
-                <div className="bg-green-600 px-4 py-1 rounded-lg mt-5 font-bold" id="date-span">
+                <div className="bg-green-600 px-4 py-1 rounded-2xl mt-5 font-bold" id="date-span">
                     <span className="text-white font-medium">
                         Seg á Dom - 18:00 as 22:00
                     </span>

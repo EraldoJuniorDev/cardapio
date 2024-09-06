@@ -12,7 +12,7 @@ export default function Home() {
         Conheça nosso Menu
       </h2>
 
-      <main className="grid grid-cols-1 md:grid-cols-3 gap-7 mx-auto max-w-7xl px-2 mb-16">
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto max-w-7xl px-2 mb-16">
 
         {/* ITENS HAMBÚRGUER */}
 

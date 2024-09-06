@@ -14,7 +14,7 @@ export default function Footer() {
 
     return (
 
-        <footer className="w-full h-11 bg-red-500 fixed bottom-0 z-40 flex justify-center">
+        <footer className="w-full h-11 bg-red-500 hover:bg-red-600 fixed bottom-0 z-40 flex justify-center rounded-t-2xl">
 
             <button
                 className=" w-full flex items-center justify-center gap-2 text-white font-bold"

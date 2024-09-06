@@ -18,11 +18,11 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
             className="bg-[rgba(0,0,0,0.8)] w-[100vw] h-[100vh] fixed"
             onClick={onClose}></div>
 
-            <div className="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px] absolute ">
+            <div className="bg-white p-5 rounded-3xl min-w-[90%] md:min-w-[600px] absolute">
 
                 <div className="flex justify-end w-full h-[2.3px]">
                     <button
-                        className="text-2xl text-red-500 py-1 px-4 "
+                        className="text-2xl text-red-500 hover:text-red-400 py-1 px-4 "
                         id="close-modal-btn"
                         onClick={onClose}><CgCloseO /></button>
                 </div>
@@ -46,7 +46,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
 
 
-                    <button className="w-80 bg-green-500 text-white px-4 py-1 rounded" id="checkout-btn">Finalizar pedido</button>
+                    <button className="w-80 bg-green-600 hover:bg-green-400 text-white px-4 py-1 rounded-2xl" id="checkout-btn">Finalizar pedido</button>
                 </div>
 
             </div>
