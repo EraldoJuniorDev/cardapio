@@ -1,3 +1,6 @@
+'use client'
+
+import { HoverCardContent, HoverCardTrigger } from "@radix-ui/react-hover-card";
 import Image from "next/image";
 import { FaCartPlus } from "react-icons/fa";
 interface ProductParams {
@@ -13,8 +16,8 @@ export default function Product({ productImage, productName, productDescription,
     return (
 
         // CONTAINER DO PRODUTO
-
-        <div className="flex items-center gap-4 rounded bg-gray-100 shadow-inner">
+        <HoverCardTrigger>
+        <div className="flex items-center gap-4 rounded bg-gray-100 shadow-inner w-96" id="containerProduct">
 
             {/* IMAGEM DO PRODUTO */}
 
@@ -25,7 +28,9 @@ export default function Product({ productImage, productName, productDescription,
                 width={150}
                 height={150}/>
 
-            <div className="w-full">
+                {/* DETALHES DO PRODUTO */}
+
+            <div className="w-full flex flex-col gap-12">
 
                 {/* NOME DO PRODUTO */}
 
@@ -33,7 +38,9 @@ export default function Product({ productImage, productName, productDescription,
 
                 {/* DESCRIÇÃO DO PRODUTO */}
 
-                <p className="text-xs text-balance lg:text-sm">{productDescription}</p>
+                <HoverCardContent>
+                    <p className="text-xs text-balance lg:text-sm " id="description">{productDescription}</p>
+                </HoverCardContent>
 
                 <div className="flex items-center gap-2 justify-between mt-3 pr-3">
 
@@ -54,5 +61,6 @@ export default function Product({ productImage, productName, productDescription,
             </div>
 
         </div>
+        </HoverCardTrigger>
     )
 }

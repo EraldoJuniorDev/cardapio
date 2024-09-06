@@ -5,7 +5,7 @@ export default function Header() {
         <header className="w-full h-[420px] bg-home bg-cover bg-center">
 
             <div className="w-full h-full flex flex-col justify-center items-center">
-                
+
                 <Image
                     className="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
                     src="/images/logo.png"

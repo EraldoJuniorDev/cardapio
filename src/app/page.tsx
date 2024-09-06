@@ -1,3 +1,4 @@
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@radix-ui/react-hover-card";
 import Product from "../components/Product";
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
         Conheça nosso Menu
       </h2>
 
-      <main className="grid grid-cols-1 md:grid-cols-2 gap-7 mx-auto max-w-7xl px-2 mb-16">
+      <main className="grid grid-cols-1 md:grid-cols-3 gap-7 mx-auto max-w-7xl px-2 mb-16">
 
         {/* ITENS HAMBÚRGUER */}
 
@@ -78,7 +79,7 @@ export default function Home() {
           productImage={"/images/refri-1.png"}
           productDescription=""
           productPrice="6.00" />
-        
+
         <Product
           productName="Guaraná Lata"
           productImage={"/images/refri-2.png"}
