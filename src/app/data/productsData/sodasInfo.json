@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "image": "/images/products/sodas/types/350ml/coca-cola-350ml.png",
+        "name": "Coca-Cola",
+        "price": 6.00,
+        "type": "350ml"
+    },
+    {
+        "id": 2,
+        "image": "/images/products/sodas/types/350ml/guarana-350ml.png",
+        "name": "Guaraná",
+        "price": 6.00,
+        "type": "350ml"
+    },
+    {
+        "id": 3,
+        "image": "/images/products/sodas/types/350ml/pepsi-350ml.png",
+        "name": "Pepsi",
+        "price": 6.00,
+        "type": "350ml"
+    },
+    {
+        "id": 4,
+        "image": "/images/products/sodas/types/350ml/fanta-350ml.png",
+        "name": "Fanta",
+        "price": 6.00,
+        "type": "350ml"
+    },
+    {
+        "id": 5,
+        "image": "/images/products/sodas/types/2L/coca-cola-2l.png",
+        "name": "Coca-Cola",
+        "price": 6.00,
+        "type": "2L"
+    },
+    {
+        "id": 6,
+        "image": "/images/products/sodas/types/2L/guarana-2l.png",
+        "name": "Guaraná",
+        "price": 6.00,
+        "type": "2L"
+    },
+    {
+        "id": 7,
+        "image": "/images/products/sodas/types/2L/pepsi-2l.png",
+        "name": "Pepsi",
+        "price": 6.00,
+        "type": "2L"
+    },
+    {
+        "id": 8,
+        "image": "/images/products/sodas/types/2L/fanta-2l.png",
+        "name": "Fanta",
+        "price": 6.00,
+        "type": "2L"
+    }
+]

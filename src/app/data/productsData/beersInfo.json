@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "image": "/images/products/beers/types/350ml/bohemia-350ml.png",
+        "name": "Bohemia",
+        "price": 6.00,
+        "type": "350ml"
+    },
+    {
+        "id": 2,
+        "image": "/images/products/beers/types/350ml/amstel-350ml.png",
+        "name": "Amstel",
+        "price": 6.00,
+        "type": "350ml"
+    },
+    {
+        "id": 3,
+        "image": "/images/products/beers/types/350ml/budweiser-350ml.png",
+        "name": "Budweiser",
+        "price": 6.00,
+        "type": "350ml"
+    },
+    {
+        "id": 4,
+        "image": "/images/products/beers/types/350ml/heineken-350ml.png",
+        "name": "Heineken",
+        "price": 6.00,
+        "type": "350ml"
+    },
+    {
+        "id": 5,
+        "image": "/images/products/beers/types/350ml/petra-350ml.png",
+        "name": "Petra",
+        "price": 6.00,
+        "type": "350ml"
+    },
+    {
+        "id": 5,
+        "image": "/images/products/beers/types/1l/budweiser-1l.png",
+        "name": "Budweiser",
+        "price": 6.00,
+        "type": "1L"
+    },
+    {
+        "id": 5,
+        "image": "/images/products/beers/types/1l/bohemia-1l.png",
+        "name": "Bohemia",
+        "price": 6.00,
+        "type": "1L"
+    },
+    {
+        "id": 5,
+        "image": "/images/products/beers/types/1l/amstel-1l.png",
+        "name": "Amstel",
+        "price": 6.00,
+        "type": "1L"
+    }
+]
