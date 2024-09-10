@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "image": "/images/refri-1.png",
+        "name": "Coca-Cola Lata",
+        "price": 6.00
+    },
+    {
+        "id": 2,
+        "image": "/images/refri-2.png",
+        "name": "Guaraná Lata",
+        "price": 6.00
+    }
+]

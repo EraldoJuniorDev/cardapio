@@ -1,0 +1,58 @@
+[
+    {
+      "id": 1,
+      "image": "/images/hamb-1.png",
+      "name": "Bacon Cheeseburger",
+      "description": "Pão com gergelim, dois hambúrgueres de carne, fatias de queijo, alface, bacon e um molho que parece ser maionese.",
+      "price": 18.90
+    },
+    {
+      "id": 2,
+      "image": "/images/hamb-2.png",
+      "name": "Hamburguer Duplo",
+      "description": "Dois hambúrgueres de carne com queijo derretido, fatias de bacon por cima, acompanhado de batatas fritas.",
+      "price": 32.90
+    },
+    {
+      "id": 3,
+      "image": "/images/hamb-3.png",
+      "name": "Double Cheeseburger",
+      "description": "Um hambúrguer simples com dois patties, queijo cheddar derretido e um molho branco.",
+      "price": 24.99
+    },
+    {
+      "id": 4,
+      "image": "/images/hamb-4.png",
+      "name": "Crispy Chicken Delight Burger",
+      "description": "Pão com gergilim, filé de frango crocante, queijo derretido, alface, fatias de tomate, anéis de cebola e picles.",
+      "price": 18.90
+    },
+    {
+      "id": 5,
+      "image": "/images/hamb-5.png",
+      "name": "Classico Delight Burger",
+      "description": "Pão com gergilim, alface crocante, fatias de tomate, queijo derretido e hambúrguer de carne bovina suculenta.",
+      "price": 15.90
+    },
+    {
+      "id": 6,
+      "image": "/images/hamb-6.png",
+      "name": "Classico Deluxe Cheeseburger",
+      "description": "Pão com gergelim, hambúrguer de carne bovina, queijo derretido, alface, fatias de tomate e anéis de cebola roxa.",
+      "price": 30.90
+    },
+    {
+      "id": 7,
+      "image": "/images/hamb-7.png",
+      "name": "Chili Burger",
+      "description": "Hambúrguer com molho de chili, queijo derretido e onion rings crocantes.",
+      "price": 25.90
+    },
+    {
+      "id": 8,
+      "image": "/images/hamb-8.png",
+      "name": "Green Garden",
+      "description": "Pão de hambúrguer dourado, hambúrguer vegano, alface, cebola roxa fatiada finamente e cenoura ralada.",
+      "price": 22.90
+    }
+  ]
