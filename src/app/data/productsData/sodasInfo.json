@@ -29,28 +29,28 @@
     },
     {
         "id": 5,
-        "image": "/images/products/sodas/types/2L/coca-cola-2l.png",
+        "image": "/images/products/sodas/types/2l/coca-cola-2l.png",
         "name": "Coca-Cola",
         "price": 6.00,
         "type": "2L"
     },
     {
         "id": 6,
-        "image": "/images/products/sodas/types/2L/guarana-2l.png",
+        "image": "/images/products/sodas/types/2l/guarana-2l.png",
         "name": "Guaraná",
         "price": 6.00,
         "type": "2L"
     },
     {
         "id": 7,
-        "image": "/images/products/sodas/types/2L/pepsi-2l.png",
+        "image": "/images/products/sodas/types/2l/pepsi-2l.png",
         "name": "Pepsi",
         "price": 6.00,
         "type": "2L"
     },
     {
         "id": 8,
-        "image": "/images/products/sodas/types/2L/fanta-2l.png",
+        "image": "/images/products/sodas/types/2l/fanta-2l.png",
         "name": "Fanta",
         "price": 6.00,
         "type": "2L"
