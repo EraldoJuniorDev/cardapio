@@ -1,6 +1,5 @@
 'use client'
 
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@radix-ui/react-hover-card";
 import Image from "next/image";
 import { FaCartPlus } from "react-icons/fa";
 interface ProductParams {
