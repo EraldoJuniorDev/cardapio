@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FaCartPlus } from "react-icons/fa";
 
 interface ProductProps {
-  product: {
+  food: {
     id: number;
     image: string;
     name: string;
@@ -11,12 +11,13 @@ interface ProductProps {
   };
 }
 
-const Product: React.FC<ProductProps> = ({ product }) => {
-  const { id, image, name, description, price } = product;
+const Product: React.FC<ProductProps> = ({ food }) => {
+  const { id, image, name, description, price } = food;
 
   return (
     <div className="flex items-center rounded bg-gray-100 shadow-inner">
-      {/* Image */}
+      
+      {/* IMAGEM DO PRODUTO */}
       <Image
         className="rounded hover:scale-105 hover:-rotate-2 duration-300 m-3"
         src={image}
@@ -25,19 +26,21 @@ const Product: React.FC<ProductProps> = ({ product }) => {
         height={128}
       />
 
-      {/* Details */}
+      {/* DETALHES DO PRODUTO */}
       <div className="w-full flex flex-col gap-3">
-        {/* Name */}
+        
+        {/* NOME DO PRODUTO */}
         <p className="font-bold text-sm lg:text-base">{name}</p>
 
-        {/* Description */}
+        {/* DESCRIÇÃO DO PRODUTO */}
         <p className="text-xs text-balance lg:text-sm">{description}</p>
 
         <div className="flex items-center gap-2 justify-between mt-3 pr-3">
-          {/* Price */}
+          
+          {/* PREÇO DO PRODUTO */}
           <p className="font-bold text-sm lg:text-base">R$ {price.toFixed(2)}</p>
 
-          {/* Add to Cart button */}
+          {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
           <button
             className="bg-gray-900 px-5 rounded add-to-cart-btn"
             data-name={name}

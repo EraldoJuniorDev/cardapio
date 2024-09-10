@@ -2,44 +2,47 @@ import Image from "next/image";
 import { FaCartPlus } from "react-icons/fa";
 
 interface ProductProps {
-  product: {
-    id: number;
+  drink: {
     image: string;
     name: string;
     price: number;
+    type: string;
   };
 }
 
-const Product: React.FC<ProductProps> = ({ product }) => {
-  const { id, image, name, price } = product;
+const Product: React.FC<ProductProps> = ({ drink }) => {
+  const { image, name, price, type } = drink;
 
   return (
-    <div className="flex items-center rounded bg-gray-100 shadow-inner">
-      {/* Image */}
+    <div className="w-full xl:w-72 flex items-center rounded bg-gray-100 shadow-inner">
+      
+      {/* IMAGEM DO PRODUTO */}
       <Image
-        className="rounded hover:scale-105 hover:-rotate-2 duration-300 m-3"
+        className="w-28 rounded hover:scale-105 hover:-rotate-2 duration-300 m-3"
         src={image}
         alt={name}
         width={128}
         height={128}
       />
 
-      {/* Details */}
+      {/* DETALHES DO PRODUTO */}
       <div className="w-full flex flex-col gap-12">
-        {/* Name */}
-        <p className="font-bold text-sm lg:text-base">{name}</p>
+        
+        {/* NOME DO PRODUTO */}
+        <p className="font-bold text-sm">{name} ({type})</p>
 
         <div className="flex items-center gap-2 justify-between mt-3 pr-3">
-          {/* Price */}
-          <p className="font-bold text-sm lg:text-base">R$ {price.toFixed(2)}</p>
+          
+          {/* PREÇO DO PRODUTO */}
+          <p className="font-bold text-sm">R$ {price.toFixed(2)}</p>
 
-          {/* Add to Cart button */}
+          {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
           <button
-            className="bg-gray-900 px-5 rounded add-to-cart-btn"
+            className="bg-gray-900 px-2 rounded add-to-cart-btn"
             data-name={name}
             data-price={price.toFixed(2)}
           >
-            <FaCartPlus className="text-xl lg:text-2xl text-white py-1" />
+            <FaCartPlus className="text-xl  text-white py-1" />
           </button>
         </div>
       </div>
