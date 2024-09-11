@@ -11,9 +11,9 @@ export default function Home() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto max-w-7xl px-2 mb-16">
 
-    {/* RENDERIZAÇÃO DO ARRAY DOS HAMBÚRGUERES */}
+        {/* RENDERIZAÇÃO DO ARRAY DOS HAMBÚRGUERES */}
         {
-          BurgersData.sort((a, b) => a.price - b.price)
+          BurgersData
             .map((burger) => (
               <Foods key={burger.id} food={burger} />
             ))
@@ -27,7 +27,7 @@ export default function Home() {
 
         {/* RENDERIZAÇÃO DO ARRAY DAS PIZZAS */}
         {
-          PizzasData.sort((a, b) => a.price - b.price)
+          PizzasData
             .map((pizza) => (
               <Foods key={pizza.id} food={pizza} />
             ))
@@ -41,7 +41,7 @@ export default function Home() {
 
         {/* RENDERIZAÇÃO DO ARRAY DAS CERVEJAS */}
         {
-          BeersData.sort((a, b) => a.price - b.price)
+          BeersData
             .map((beer) => (
               <Drinks key={beer.id} drink={beer} />
             ))
@@ -55,7 +55,7 @@ export default function Home() {
 
         {/* RENDERIZAÇÃO DO ARRAY DOS REFRIGERANTES */}
         {
-          SodasData.sort((a, b) => a.price - b.price)
+          SodasData
             .map((soda) => (
               <Drinks key={soda.id} drink={soda} />
             ))
