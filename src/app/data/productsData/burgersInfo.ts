@@ -3,7 +3,7 @@ const BurgesData = [
       "id": 1,
       "image": "/images/products/burgers/bacon-cheeseburger.png",
       "name": "Bacon Cheeseburger",
-      "description": "Pão com gergelim, dois hambúrgueres de carne, fatias de queijo, alface, bacon e um molho que parece ser maionese.",
+      "description": "Pão com gergelim, dois hambúrgueres de carne, fatias de queijo, alface, bacon e maionese.",
       "price": 18.90
     },
     {
