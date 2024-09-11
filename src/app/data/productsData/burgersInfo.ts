@@ -1,4 +1,4 @@
-[
+const BurgesData = [
     {
       "id": 1,
       "image": "/images/products/burgers/bacon-cheeseburger.png",
@@ -56,3 +56,5 @@
       "price": 22.90
     }
   ]
+
+  export default BurgesData;

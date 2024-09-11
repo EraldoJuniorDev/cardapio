@@ -20,14 +20,16 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
             <div className="bg-white p-5 rounded-3xl min-w-[90%] md:min-w-[600px] absolute">
 
-                <div className="flex justify-end w-full h-[2.3px]">
+                <div className=" text-black border-b-2 border-gray-200 rounded flex items-center justify-between w-full">
+                    
+                <h2 className="text-center font-bold text-xl m-3">Meu Carrinho</h2>
+
                     <button
-                        className="text-2xl text-red-500 hover:text-red-400 py-1 px-4 "
+                        className="text-2xl py-1 px-4 "
                         id="close-modal-btn"
-                        onClick={onClose}><CgCloseO /></button>
+                        onClick={onClose}><CgCloseO className="hover:text-red-600" /></button>
                 </div>
 
-                <h2 className="text-center font-bold text-xl mb-2">Meu Carrinho</h2>
 
                 <div className="flex justify-between mb-2 flex-col" id="cart-items">
                 </div>
@@ -46,7 +48,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
 
 
-                    <button className="w-80 bg-green-600 hover:bg-green-400 text-white px-4 py-1 rounded-2xl" id="checkout-btn">Finalizar pedido</button>
+                    <button className="w-80 bg-red-500 hover:bg-red-400 text-white px-4 py-1 rounded" id="checkout-btn">Finalizar pedido</button>
                 </div>
 
             </div>

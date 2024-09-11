@@ -1,4 +1,4 @@
-[
+const PizzasData = [
     {
       "id": 1,
       "image": "/images/products/pizzas/mussarela.png",
@@ -28,3 +28,5 @@
       "price": 18.90
     }
   ]
+
+  export default PizzasData;

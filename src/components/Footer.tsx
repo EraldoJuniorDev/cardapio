@@ -22,7 +22,7 @@ export default function Footer() {
                 onClick={handleOpenModal}>
 
                 (<span id="cart-count">0</span>)
-                Veja meu carinho
+                Meu carinho
 
                 <FaCartPlus className="text-2xl py-1" />
 
