@@ -3,12 +3,16 @@ import { FaCartPlus } from "react-icons/fa";
 import Cart from "../../app/data/cartList/cart";
 
 export interface ProductProps {
-  id?: number;
-  image?: string;
+  id: number;
+  image: string;
   name: string;
   description: string;
   price: number;
   quantity?: number;
+}
+
+function HandleId(id: number): number {
+  return id;
 }
 
 const Product: React.FC<ProductProps> = ({ id, image, name, description, price, quantity }: ProductProps) => {
@@ -26,9 +30,18 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
         existingItem.quantity += 1;
       }
 
-      else{Cart.push(
-        { image, name, price, quantity: 1 })
-      console.log(Cart)}
+      else {
+        Cart.push(
+          {
+            id: HandleId(id),
+            image,
+            name,
+            price,
+            quantity: 1,
+            type: ""
+          })
+        console.log(Cart)
+      }
     }
 
   }

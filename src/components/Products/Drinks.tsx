@@ -4,12 +4,16 @@ import Cart from "../../app/data/cartList/cart";
 import CartItems from "../Cart/CartItems";
 
 export interface ProductProps {
-  id?: number;
-  image?: string;
+  id: number;
+  image: string;
   name: string;
   price: number;
-  type?: string;
+  type: string;
   quantity?: number;
+}
+
+function HandleId(id: number): number {
+  return id;
 }
 
 const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: ProductProps) => {
@@ -21,16 +25,22 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
       const name = parentButton.getAttribute("data-name");
       const price = parseFloat(parentButton.getAttribute("data-price"));
 
-      const existingItem = Cart.find(item => item.name === name)
+      const existingItem = Cart.find(item => item.name === name && item.type === type)
 
       if (existingItem) {
         existingItem.quantity += 1;
       }
 
       else {
-        Cart.push(
-          { image, name, price, quantity: 1 })
-        console.log(Cart)
+        Cart.push({
+          id: HandleId(id),
+          image,
+          name,
+          price,
+          quantity: 1,
+          type
+        });
+        console.log(Cart);
       }
     }
   }

@@ -1,13 +1,14 @@
 import { CgCloseO } from "react-icons/cg";
 import CartItems from "../components/Cart/CartItems";
 import Cart from "../app/data/cartList/cart";
+import { PiEmptyBold } from "react-icons/pi";
 
 interface ModalProps {
     isOpen?: boolean;
     onClose?: () => void;
 }
 
-interface CartProps{
+interface CartProps {
     id: number;
     image: string;
     name: string;
@@ -15,7 +16,7 @@ interface CartProps{
     quantity: string;
 }
 
-export default function Modal({ isOpen, onClose }: ModalProps){
+export default function Modal({ isOpen, onClose }: ModalProps) {
 
     if (!isOpen) return null;
 
@@ -45,16 +46,16 @@ export default function Modal({ isOpen, onClose }: ModalProps){
                 </div>
 
                 {/* ITENS DO CARRINHO */}
-                <div
-                    className="flex justify-between gap-1 overflow-scroll overflow-x-hidden max-h-96 mb-2 flex-col"
-                    id="cart-items">
-                        {
-                            Cart.map((cart) =>(
-                                <CartItems key={cart.id} image={cart.image} name={cart.name} price={cart.price} quantity={cart.quantity} />
-                            ))
-                        }
-                    
-                </div>
+                {Cart.length > 0 && (
+                    <div className="flex justify-between gap-1 overflow-scroll overflow-x-hidden max-h-96 mb-2 flex-col" id="cart-items">
+                        {Cart.map((cart) => (
+                            <CartItems key={cart.id} image={cart.image} name={cart.name} price={cart.price} quantity={cart.quantity} type={cart.type} id={0} />
+                        ))}
+                    </div>
+                )}
+                {Cart.length === 0 && (
+                    <p className="text-[#BF0404] text-lg h-24 gap-2 flex items-center justify-center">Seu carrinho está vazio! <PiEmptyBold /></p>
+                )}
 
                 {/* CONTEUDO DO MODAL */}
                 <div className="px-4 flex flex-col gap-1">
