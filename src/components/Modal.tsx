@@ -1,11 +1,21 @@
 import { CgCloseO } from "react-icons/cg";
+import CartItems from "../components/Cart/CartItems";
+import Cart from "../app/data/cartList/cart";
 
 interface ModalProps {
     isOpen?: boolean;
     onClose?: () => void;
 }
 
-export default function Modal({ isOpen, onClose }: ModalProps) {
+interface CartProps{
+    id: number;
+    image: string;
+    name: string;
+    price: number;
+    quantity: string;
+}
+
+export default function Modal({ isOpen, onClose }: ModalProps){
 
     if (!isOpen) return null;
 
@@ -20,7 +30,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 onClick={onClose}></div>
 
             {/* CONTAINER DO MODAL */}
-            <div className="bg-white pb-4 rounded-3xl min-w-[90%] md:min-w-[600px] absolute">
+            <div className="bg-white h-fit pb-4 rounded-3xl min-w-[90%] md:min-w-[600px] absolute" onKeyDown={onClose}>
 
                 {/* CABEÇALHO DO MODAL */}
                 <div className=" bg-[#BF0404] p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
@@ -31,18 +41,25 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     <button
                         className="text-2xl py-1 px-4 "
                         id="close-modal-btn"
-                        onClick={onClose}><CgCloseO className="hover:text-red-600" /></button>
+                        onClick={onClose}><CgCloseO className="hover:scale-125 hover:duration-200" /></button>
                 </div>
 
                 {/* ITENS DO CARRINHO */}
-                <div className="flex justify-between mb-2 flex-col" id="cart-items">
+                <div
+                    className="flex justify-between gap-1 overflow-scroll overflow-x-hidden max-h-96 mb-2 flex-col"
+                    id="cart-items">
+                        {
+                            Cart.map((cart) =>(
+                                <CartItems key={cart.id} image={cart.image} name={cart.name} price={cart.price} quantity={cart.quantity} />
+                            ))
+                        }
+                    
                 </div>
 
                 {/* CONTEUDO DO MODAL */}
-                <div className="px-4">
-                    <p className="font-bold">Total: <span id="cart-total">0.00</span></p>
+                <div className="px-4 flex flex-col gap-1">
 
-                    <p className="font-bold mt-4">Endereço de Entrega:</p>
+                    <p className="font-bold">Endereço de Entrega:</p>
 
                     {/* INPUT DO ENDEREÇO DE ENTREGA */}
                     <input type="text"
@@ -53,12 +70,14 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     {/* AVISO DE ENDEREÇO DE ENTREGA VAZIO */}
                     <p className="text-red-500 hidden" id="adress-warn">Digite seu endereço completo!</p>
 
+                    <p className="font-bold">Total: <span id="cart-total">0.00</span></p>
+
                 </div>
 
                 {/* BOTÃO DE FINALIZAR COMPRA */}
                 <div className="flex items-center justify-center mt-5 w-full">
 
-                    <button className="w-80 bg-[#BF0404] hover:bg-red-400 text-white px-4 py-1 rounded" id="checkout-btn">Finalizar pedido</button>
+                    <button className="w-80 bg-[#BF0404] hover:scale-105 hover:duration-200 text-white px-4 py-1 rounded-3xl" id="checkout-btn">Finalizar pedido</button>
 
                 </div>
 
