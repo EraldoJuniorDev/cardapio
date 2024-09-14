@@ -8,13 +8,14 @@ interface ModalProps {
     onClose?: () => void;
 }
 
-interface CartProps {
-    id: number;
-    image: string;
-    name: string;
-    price: number;
-    quantity: string;
-}
+function formatCurrency(value : number) {
+    return `R$ ${value.toFixed(2).replace('.', ',')}`;
+  }
+  
+  function handleTotal() {
+    const total = Cart.reduce((acc, item) => acc + (item.price || 0) * item.quantity, 0);
+    return formatCurrency(total);
+  }
 
 export default function Modal({ isOpen, onClose }: ModalProps) {
 
@@ -71,7 +72,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     {/* AVISO DE ENDEREÇO DE ENTREGA VAZIO */}
                     <p className="text-red-500 hidden" id="adress-warn">Digite seu endereço completo!</p>
 
-                    <p className="font-bold">Total: <span id="cart-total">0.00</span></p>
+                    <p className="font-bold">Total: <span id="cart-total">{handleTotal()}</span></p>
 
                 </div>
 
