@@ -37,7 +37,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 {/* CABEÇALHO DO MODAL */}
                 <div className=" bg-[#BF0404] p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
 
-                    <h2 className="text-center font-bold text-xl m-3">Meu Carrinho</h2>
+                    <h2 className="text-center font-bold text-base m-3">Meu Carrinho</h2>
 
                     {/* BOTÃO DE FECHAR MODAL */}
                     <button
@@ -61,25 +61,25 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 {/* CONTEUDO DO MODAL */}
                 <div className="px-4 flex flex-col gap-1">
 
-                    <p className="font-bold">Endereço de Entrega:</p>
+                    <p className="text-sm font-bold">Endereço de Entrega:</p>
 
                     {/* INPUT DO ENDEREÇO DE ENTREGA */}
                     <input type="text"
                         placeholder="Digite seu endereço completo..."
                         id="adress"
-                        className="w-full border-2 rounded my-1 pl-[5px] py-1" />
+                        className="text-sm w-full border-2 rounded my-1 pl-[5px] py-1" />
 
                     {/* AVISO DE ENDEREÇO DE ENTREGA VAZIO */}
                     <p className="text-red-500 hidden" id="adress-warn">Digite seu endereço completo!</p>
 
-                    <p className="font-bold">Total: <span id="cart-total">{handleTotal()}</span></p>
+                    <p className="text-sm font-bold">Total: <span id="cart-total">{handleTotal()}</span></p>
 
                 </div>
 
                 {/* BOTÃO DE FINALIZAR COMPRA */}
                 <div className="flex items-center justify-center mt-5 w-full">
 
-                    <button className="w-80 bg-[#BF0404] hover:scale-105 hover:duration-200 text-white px-4 py-1 rounded-3xl" id="checkout-btn">Finalizar pedido</button>
+                    <button className="font-sm w-80 bg-[#BF0404] hover:scale-105 hover:duration-200 text-white px-4 py-1 rounded-3xl" id="checkout-btn">Finalizar pedido</button>
 
                 </div>
 
