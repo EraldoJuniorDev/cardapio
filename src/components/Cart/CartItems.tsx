@@ -38,7 +38,7 @@ export default function CartItems({ image, name, price, type, quantity }: Produc
 
                         <TooltipContent>
 
-                            <p className="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm sm:hidden cursor-progress">{name}</p>
+                            <p className="sm:hidden absolute shadow-lg group-hover:block bg-[#333] text-white font-semibold px-3 py-2 text-[13px] left-full ml-3 top-0 bottom-0 my-auto h-max w-max rounded-md before:w-4 before:h-4 before:rotate-45 before:bg-[#333] before:absolute before:z-[-1] before:bottom-0 before:top-0 before:my-auto before:-left-1 before:mx-auto">{name}</p>
 
                         </TooltipContent>
 
