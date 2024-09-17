@@ -100,11 +100,11 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
             </div>
           </div>
         ) : (
-          <div className="w-full flex flex-col items-center justify-center text-center gap-7">
+          <div className="w-full flex flex-col items-center justify-center text-center ">
             {/* NOME DO PRODUTO */}
             <p className="w-32 font-bold text-sm flex items-center justify-center text-center">{name} ({type})</p>
 
-            <div className="w-full flex gap-2 justify-between mt-3 pr-3">
+            <div className="w-full flex flex-col gap-2 justify-between mt-3 pr-3 sm:justify-center">
 
               {/* PREÇO DO PRODUTO */}
               <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
