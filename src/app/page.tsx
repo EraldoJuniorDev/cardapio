@@ -7,8 +7,6 @@ import Cart from "./data/cartList/cart";
 
 export default function Home() {
 
-  Cart
-
   return (
     
       <main>
@@ -20,7 +18,7 @@ export default function Home() {
           {
             BurgersData
               .map((burger) => (
-                <Foods key={burger.id} id={burger.id} name={burger.name} image={burger.image} description={burger.description} price={burger.price} quantity={2}/>
+                <Foods key={burger.id} id={burger.id} name={burger.name} image={burger.image} description={burger.description} price={burger.price} quantity={0} type={""}/>
               ))
           }
         </div>
@@ -33,7 +31,7 @@ export default function Home() {
           {
             PizzasData
               .map((pizza) => (
-                <Foods key={pizza.id} id={pizza.id} name={pizza.name} image={pizza.image} description={pizza.description} price={pizza.price} />
+                <Foods key={pizza.id} id={pizza.id} name={pizza.name} image={pizza.image} description={pizza.description} price={pizza.price} quantity={0} type={""} />
               ))
           }
         </div>
@@ -46,7 +44,7 @@ export default function Home() {
           {
             BeersData
               .map((beer) => (
-                <Drinks key={beer.id} id={beer.id} name={beer.name} image={beer.image} price={beer.price} type={beer.type} />
+                <Drinks key={beer.id} id={beer.id} name={beer.name} image={beer.image} price={beer.price} type={beer.type} quantity={0} />
               ))
           }
         </div>
@@ -59,7 +57,7 @@ export default function Home() {
           {
             SodasData
               .map((soda) => (
-                <Drinks key={soda.id} id={soda.id} name={soda.name} image={soda.image} price={soda.price} type={soda.type} />
+                <Drinks key={soda.id} id={soda.id} name={soda.name} image={soda.image} price={soda.price} type={soda.type} quantity={0} />
               ))
           }
         </div>

@@ -8,14 +8,11 @@ interface ModalProps {
     onClose?: () => void;
 }
 
-function formatCurrency(value : number) {
-    return `R$ ${value.toFixed(2).replace('.', ',')}`;
-  }
-  
-  function handleTotal() {
+function handleTotal() {
     const total = Cart.reduce((acc, item) => acc + (item.price || 0) * item.quantity, 0);
-    return formatCurrency(total);
-  }
+    const formattedPrice = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    return { total, formattedPrice };
+}
 
 export default function Modal({ isOpen, onClose }: ModalProps) {
 
@@ -32,7 +29,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 onClick={onClose}></div>
 
             {/* CONTAINER DO MODAL */}
-            <div className="bg-white h-fit pb-4 rounded-3xl min-w-[90%] md:min-w-[600px] absolute" onKeyDown={onClose}>
+            <div className="bg-white h-fit pb-4 rounded-3xl min-w-[90%] md:min-w-[600px] absolute " onKeyDown={onClose}>
 
                 {/* CABEÇALHO DO MODAL */}
                 <div className=" bg-[#BF0404] p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
@@ -48,10 +45,8 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
                 {/* ITENS DO CARRINHO */}
                 {Cart.length > 0 && (
-                    <div className="flex justify-between gap-1 overflow-scroll overflow-x-hidden max-h-96 mb-2 flex-col" id="cart-items">
-                        {Cart.map((cart) => (
-                            <CartItems key={cart.id} image={cart.image} name={cart.name} price={cart.price} quantity={cart.quantity} type={cart.type} id={0} />
-                        ))}
+                    <div className="flex justify-between gap-1 overflow-scroll overflow-x-hidden max-h-96 mb-2 flex-col sm:m-5 rounded-base scrollbar scrollbar-thumb-gray-900 scrollbar-track-red-500 scrollbar-medium" id="cart-items">
+                        <CartItems/>
                     </div>
                 )}
                 {Cart.length === 0 && (
@@ -72,7 +67,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     {/* AVISO DE ENDEREÇO DE ENTREGA VAZIO */}
                     <p className="text-red-500 hidden" id="adress-warn">Digite seu endereço completo!</p>
 
-                    <p className="text-sm font-bold">Total: <span id="cart-total">{handleTotal()}</span></p>
+                    <p className="text-sm font-bold">Total: <span id="cart-total">{handleTotal().formattedPrice}</span></p>
 
                 </div>
 

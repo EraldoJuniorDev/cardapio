@@ -22,6 +22,12 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .scrollbar-medium::-webkit-scrollbar {
+    width: 12px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
 }
 
 

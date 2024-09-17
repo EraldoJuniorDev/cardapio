@@ -1,46 +1,67 @@
-import Image from "next/image"
+'use client'
+
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import Footer from "./Footer"; // Assuming Footer is in the same directory
+
+function checkRestaurantOpen() {
+  const data = new Date();
+  const hora = data.getHours();
+  return hora >= 18 && hora < 22;
+}
 
 export default function Header() {
-    return (
-        
-        <header className="w-full h-[420px] bg-home bg-cover bg-center">
 
-            <div className="w-full h-full flex flex-col justify-center items-center">
+  const [isOpen, setIsOpen] = useState(checkRestaurantOpen());
 
-                {/* LOGO DO SITE */}
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIsOpen(checkRestaurantOpen());
+    }, 60000);
 
-                <Image
-                    className="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
-                    src="/images/logo.png"
-                    alt="Logo Guaxuma's Burguer"
-                    width={200}
-                    height={200} />
+    return () => clearInterval(intervalId);
+  }, []);
 
-                {/* NOME DO SITE */}
+  return (
+    <header className="w-full h-[420px] bg-home bg-cover bg-center">
+      <div className="w-full h-full flex flex-col justify-center items-center gap-4">
+        {/* LOGO DO SITE */}
+        <Image
+          className="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
+          src="/images/logo.png"
+          alt="Logo Guaxuma's Burguer"
+          width={200}
+          height={200}
+        />
 
-                <h1 className="text-4x1 mt-4 mb-2 font-bold text-white">
-                    Guaxuma&apos;s Burguer
-                </h1>
+        {/* NOME DO SITE */}
+        <h1 className="text-4xl font-bold text-white">
+          Guaxuma&apos;s Burguer
+        </h1>
 
-                {/* INFORMAÇÕES DO SITE */}
+        {/* LOCALIZAÇÃO DA LOJA */}
+        <span className="text-white text-center font-medium">
+          Rua C-54, Avenida Guaxuma - Benedito Bentes - AL
+        </span>
 
-                <span className="text-white text-center font-medium">
-                    Rua C-54, Avenida Guaxuma - Benedito Bentes - AL
-                </span>
+        {/* STATUS DE HORÁRIO DE FUNCIONAMENTO DO SITE */}
+        <div className={"rounded-xl py-1 px-2"}>
+          <span className="text-white font-medium">
+            Seg á Dom - 18:00 as 22:00
+          </span>
+        </div>
 
-                {/* STATUS DE HORÁRIO DE FUNCIONAMENTO DO SITE */}
+        <div>
+          {isOpen ? (
+            <span className="text-white bg-green-600 py-1 px-2 rounded">Aberto</span>
+          ) : (
+            <span className="text-white bg-[#BF0404] py-1 px-2 rounded">Fechado</span>
+          )}
+        </div>
 
-                <div className="bg-green-600 px-4 py-1 rounded-2xl mt-5 font-bold" id="date-span">
-
-                    <span className="text-white font-medium">
-
-                        Seg á Dom - 18:00 as 22:00
-                    </span>
-
-                </div>
-
-            </div>
-
-        </header>
-    )
+        {/* Render Footer only if the restaurant is open */}
+        {isOpen && <Footer />}
+      </div>
+    </header>
+  );
 }

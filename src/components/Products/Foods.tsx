@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { FaCartPlus } from "react-icons/fa";
 import Cart from "../../app/data/cartList/cart";
 
@@ -8,14 +9,31 @@ export interface ProductProps {
   name: string;
   description: string;
   price: number;
-  quantity?: number;
+  quantity: number;
+  type: string;
 }
 
 function HandleId(id: number): number {
   return id;
 }
 
-const Product: React.FC<ProductProps> = ({ id, image, name, description, price, quantity }: ProductProps) => {
+function checkRestaurantOpen() {
+  const data = new Date();
+  const hora = data.getHours();
+  return hora >= 18 && hora < 22;
+}
+
+const Product: React.FC<ProductProps> = ({ id, image, name, description, price, quantity, type }: ProductProps) => {
+
+  const [isOpen, setIsOpen] = useState(checkRestaurantOpen());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIsOpen(checkRestaurantOpen());
+    }, 60000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleCartItem = (ev: any) => {
     const parentButton = ev.target.closest(".add-to-cart-btn")
@@ -38,7 +56,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
             name,
             price,
             quantity: 1,
-            type: ""
+            type
           })
         console.log(Cart)
       }
@@ -62,29 +80,61 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
       <div className="w-full flex flex-col gap-3">
 
         {/* NOME DO PRODUTO */}
-        <p className="font-bold text-sm lg:text-base">{name}</p>
+        <p className="font-bold text-sm">{name}</p>
+
+        {/* RENDERIZA NOME E TIPO SE AMBOS EXISTIREM */}
+        <p>
+          {type && (
+            <div className="flex items-center sm:gap-2">
+              <h2 className="w-24 sm:w-fit font-bold text-sm whitespace-nowrap overflow-hidden text-ellipsis">
+                {name}
+              </h2>
+              <p className="text-xs">
+                ({type})
+              </p>
+            </div>
+            )}
+        </p>
 
         {/* DESCRIÇÃO DO PRODUTO */}
-        <p className="text-xs text-balance lg:text-sm">{description}</p>
+        <p className="text-sm text-balance">{description}</p>
 
         <div className="flex items-center gap-2 justify-between mt-3 pr-3">
 
           {/* PREÇO DO PRODUTO */}
-          <p className="font-bold text-sm lg:text-base">R$ {price.toFixed(2)}</p>
+          <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+          })}</p>
 
           {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
-          <button
+          {isOpen ? (
+
+            <button
             onClick={handleCartItem}
-            className="bg-gray-900 px-5 rounded add-to-cart-btn"
+            className="bg-green-600 px-2 rounded add-to-cart-btn"
             data-name={name}
             data-price={price}
-          >
+            >
+
             <FaCartPlus className="text-xl lg:text-2xl text-white py-1" />
           </button>
+
+          ) : (
+
+            <p className="text-white bg-[#BF0404] text-sm py-1 px-2 rounded shadow-inner">
+              Indisponível
+            </p>
+          )}
+
         </div>
+
       </div>
+
     </div>
+
   );
+  
 };
 
 export default Product;

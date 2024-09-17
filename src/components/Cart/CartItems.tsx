@@ -1,68 +1,108 @@
 import { MdDeleteForever } from "react-icons/md";
 import { ProductProps } from "../Products/Drinks";
 import Image from "next/image";
+import Cart from "../../app/data/cartList/cart";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
 
-export default function CartItems({ image, name, price, type, quantity }: ProductProps) {
+export default function CartItems() {
+
+    const handleDeleteItem = (productId: number) => {
+
+        const updatedCart = Cart.filter((item) => item.id !== productId);
+
+        console.log(productId)
+
+
+    };
 
     return (
-        
-        <div className="bg-gray-100 shadow-inner rounded flex py-2 border-y-2 px-4">
 
-            <div className="flex items-center justify-around text-center w-full">
+        <div className="shadow-2xl rounded flex flex-col p-1 gap-3 sm:p-3">
 
-                {/* IMAGEM DO PRODUTO */}
+            {Cart.map((handleCartItem) => (
 
-                <Image
-                    className="rounded hidden sm:flex"
-                    src={image!}
-                    alt={name}
-                    width={80}
-                    height={80} />
+                <div key={handleCartItem.id} className="flex items-center justify-around text-center w-full py-2 px-4 shadow-inner bg-gray-100 rounded">
 
-                {/* CONTAINER DO TOOLTIP DO NOME DO PRODUTO */}
+                    {/* IMAGEM DO PRODUTO */}
+                    <Image
+                        className="rounded hidden sm:flex"
+                        src={handleCartItem.image}
+                        alt={handleCartItem.name}
+                        width={80}
+                        height={80} />
 
-                <TooltipProvider>
+                    {/* CONTAINER DO TOOLTIP DO NOME DO PRODUTO */}
+                    <TooltipProvider>
 
-                    <Tooltip>
+                        <Tooltip>
 
-                        <TooltipTrigger>
+                            <TooltipTrigger>
 
-                            {/* GATILHO DO TOOLTIP DO NOME DO PRODUTO */}
+                                {/* GATILHO DO TOOLTIP DO NOME DO PRODUTO */}
 
-                            <h2 className="w-44 sm:w-64 font-bold text-sm whitespace-nowrap overflow-hidden text-ellipsis">{name}</h2>
+                                {/* RENDERIZA SOMENTE O NOME SE type NÃO EXISTIR */}
+                                {!handleCartItem.type && (
 
-                        </TooltipTrigger>
+                                    <h2 className="w-24 sm:w-fit font-bold text-sm whitespace-nowrap overflow-hidden text-ellipsis">
 
-                        {/* CONTEUDO DO TOOLTIP DO NOME DO PRODUTO */}
+                                        {handleCartItem.name}
 
-                        <TooltipContent>
+                                        </h2>
+                                )}
 
-                            <p className="sm:hidden absolute shadow-lg group-hover:block bg-[#333] text-white font-semibold px-3 py-2 text-[13px] left-full ml-3 top-0 bottom-0 my-auto h-max w-max rounded-md before:w-4 before:h-4 before:rotate-45 before:bg-[#333] before:absolute before:z-[-1] before:bottom-0 before:top-0 before:my-auto before:-left-1 before:mx-auto">{name}</p>
+                                {/* RENDERIZA NOME E TIPO SE AMBOS EXISTIREM */}
+                                {handleCartItem.type && (
 
-                        </TooltipContent>
+                                    <div className="flex items-center sm:gap-2">
 
-                    </Tooltip>
+                                        <h2 className="w-24 sm:w-fit font-bold text-sm whitespace-nowrap overflow-hidden text-ellipsis">
 
-                </TooltipProvider>
+                                            {handleCartItem.name}
 
-                {/* QUANTIDADE DE PRODUTOS */}
+                                            </h2>
 
-                <p className="text-xs">(Quantidade: {quantity})</p>
+                                        <p className="text-xs">
+                                            ({handleCartItem.type})
 
-                {/* PREÇO DO PRODUTO */}
+                                        </p>
 
-                <p className="text-xs">R$ {price.toFixed(2)}</p>
+                                    </div>
+                                )}
 
-            </div>
 
-            {/* BOTÃO DE DELETAR UM PRODUTO */}
+                            </TooltipTrigger>
 
-            <div className="flex items-center">
+                            {/* CONTEUDO DO TOOLTIP DO NOME DO PRODUTO */}
 
-                <button className="text-red-600 text-2xl"><MdDeleteForever /></button>
+                            <TooltipContent>
 
-            </div>
+                                <p className="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm sm:hidden cursor-progress">{handleCartItem.name}</p>
+
+                            </TooltipContent>
+
+                        </Tooltip>
+
+                    </TooltipProvider>
+
+                    {/* QUANTIDADE DE PRODUTOS */}
+                    <p className="text-xs">(Quantidade: {handleCartItem.quantity})</p>
+
+                    {/* PREÇO DO PRODUTO */}
+                    <p className="text-xs">{handleCartItem.price.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                    })}
+                    </p>
+
+                    {/* BOTÃO DE DELETAR UM PRODUTO */}
+                    <button
+                        onClick={() => handleDeleteItem(handleCartItem.id)}
+                        className="text-red-600 text-2xl"><MdDeleteForever />
+                    </button>
+
+                </div>
+
+            ))}
 
         </div>
     )

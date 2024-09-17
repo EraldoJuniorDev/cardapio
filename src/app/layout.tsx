@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700']
-})
+});
 
 export const metadata: Metadata = {
   title: "Guaxuma's Burguer",
@@ -17,23 +17,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  isOpen // Receive isOpen as a prop
 }: Readonly<{
   children: React.ReactNode;
+  isOpen: boolean;
 }>) {
   return (
-
     <html lang="pt-br">
-
       <body className={roboto.className}>
-
         <Header />
-
         {children}
-
-        <Footer />
-
+        {/* Render Footer conditionally based on isOpen from Header */}
+        {isOpen && <Footer />}
       </body>
-
     </html>
   );
 }

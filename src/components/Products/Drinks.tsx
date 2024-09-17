@@ -1,7 +1,7 @@
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { FaCartPlus } from "react-icons/fa";
 import Cart from "../../app/data/cartList/cart";
-import CartItems from "../Cart/CartItems";
 
 export interface ProductProps {
   id: number;
@@ -9,45 +9,62 @@ export interface ProductProps {
   name: string;
   price: number;
   type: string;
-  quantity?: number;
+  quantity: number;
 }
 
 function HandleId(id: number): number {
   return id;
 }
 
+function checkRestaurantOpen() {
+  const data = new Date();
+  const hora = data.getHours();
+  return hora >= 18 && hora < 22;
+}
+
 const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: ProductProps) => {
 
+  const [isOpen, setIsOpen] = useState(checkRestaurantOpen());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIsOpen(checkRestaurantOpen());
+    }, 60000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   const handleCartItem = (ev: any) => {
-    const parentButton = ev.target.closest(".add-to-cart-btn")
+    const parentButton = ev.target.closest(".add-to-cart-btn");
 
     if (parentButton) {
       const name = parentButton.getAttribute("data-name");
       const price = parseFloat(parentButton.getAttribute("data-price"));
 
-      const existingItem = Cart.find(item => item.name === name && item.type === type)
+      // Find existing item based on name and type
+      const existingItem = Cart.find(item => item.name === name && item.type === type);
 
       if (existingItem) {
-        existingItem.quantity += 1;
-      }
-
-      else {
+        existingItem.quantity += 1; // Increment quantity for existing item
+      } else {
+        // Create a new item with a unique identifier based on name and type
+        const uniqueId = `${name}-${type}-${Date.now()}`;
+        const uniqueIdString = parseFloat(uniqueId);// Combine name, type, and timestamp
         Cart.push({
-          id: HandleId(id),
-          image,
+          id: uniqueIdString,
           name,
           price,
           quantity: 1,
-          type
+          image,
+          type,
         });
-        console.log(Cart);
       }
+      console.log(Cart);
     }
-  }
+  };
 
   return (
     <div className="w-full xl:w-72 flex items-center rounded bg-gray-100 shadow-inner">
-
       {/* IMAGEM DO PRODUTO */}
       <Image
         className="w-28 rounded hover:scale-105 hover:-rotate-2 duration-300 m-3"
@@ -58,27 +75,40 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
       />
 
       {/* DETALHES DO PRODUTO */}
-      <div className="w-full flex flex-col gap-12">
 
-        {/* NOME DO PRODUTO */}
-        <p className="font-bold text-sm">{name} ({type})</p>
+        {isOpen ? (
+          <div className="w-full flex flex-col gap-12">
+            {/* NOME DO PRODUTO */}
+            <p className="font-bold text-sm">{name} ({type})</p>
 
-        <div className="flex items-center gap-2 justify-between mt-3 pr-3">
+            <div className="flex items-center gap-2 justify-between mt-3 pr-3">
+              {/* PREÇO DO PRODUTO */}
+              <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}</p>
 
-          {/* PREÇO DO PRODUTO */}
-          <p className="font-bold text-sm">R$ {price.toFixed(2)}</p>
+              {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
+              <button
+                onClick={handleCartItem}
+                className="bg-green-600 px-2 rounded add-to-cart-btn"
+                data-name={name}
+                data-price={price}
+              >
+                <FaCartPlus className="text-xl lg:text-2xl text-white py-1" />
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="w-full flex flex-col items-center justify-center text-center gap-7">
+            {/* NOME DO PRODUTO */}
+            <p className="w-32 font-bold text-sm flex items-center justify-center text-center">{name} ({type})</p>
 
-          {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
-          <button
-            onClick={handleCartItem}
-            className="bg-gray-900 px-2 rounded add-to-cart-btn"
-            data-name={name}
-            data-price={price}
-          >
-            <FaCartPlus className="text-xl  text-white py-1" />
-          </button>
-        </div>
-      </div>
+            <p className="text-white bg-[#BF0404] py-1 px-2 rounded">Indisponível</p>
+
+          </div>
+        )}
+
     </div>
   );
 };

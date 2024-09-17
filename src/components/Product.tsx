@@ -10,6 +10,12 @@ interface ProductParams {
     onCLick?: () => void
 }
 
+function checkRestaurantOpen() {
+    const data = new Date();
+    const hora = data.getHours();
+    return hora >= 18 && hora < 22;
+  }
+
 export default function Product({ productImage, productName, productDescription, productPrice }: ProductParams) {
 
     return (
@@ -37,7 +43,7 @@ export default function Product({ productImage, productName, productDescription,
                     <div className="flex items-center gap-2 justify-between mt-3 pr-3">
                         
                         {/* PREÇO DO PRODUTO */}
-                        <p className="font-bold text-sm lg:text-base">R$ {productPrice}</p>
+                        <p className="font-bold text-sm lg:text-base">{productPrice}</p>
 
                         {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
                         <button className="bg-gray-900 px-5 rounded add-to-cart-btn"
