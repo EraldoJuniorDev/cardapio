@@ -104,7 +104,15 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
             {/* NOME DO PRODUTO */}
             <p className="w-32 font-bold text-sm flex items-center justify-center text-center">{name} ({type})</p>
 
-            <p className="text-white text-sm bg-[#BF0404] py-1 px-2 rounded">Indisponível</p>
+            <div className="w-full flex gap-2 justify-between mt-3 pr-3">
+
+              {/* PREÇO DO PRODUTO */}
+              <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}</p>
+              <p className="text-white text-sm bg-[#BF0404] py-1 px-2 rounded">Indisponível</p>
+            </div>
 
           </div>
         )}
