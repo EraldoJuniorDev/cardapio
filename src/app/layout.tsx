@@ -4,14 +4,7 @@ import { Roboto } from "next/font/google"
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
-
-
-interface LayoutProps {
-  children?: React.ReactNode;
-  params?: any;
-  isOpen: boolean;
-}
-
+import { LayoutProps } from "../../.next/types/app/layout";
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -23,19 +16,14 @@ export const metadata: Metadata = {
   description: "O melhor da cidade",
 };
 
-export default function RootLayout({ children, isOpen }: LayoutProps) {
-
+export default function RootLayout({ children } : LayoutProps ) {
   return (
-
     <html lang="pt-br">
-
       <body className={roboto.className}>
-
         <Header />
-
         {children}
-
-        {isOpen && <Footer />}
+        {/* Render Footer conditionally based on isOpen from Header */}
+        <Footer />
       </body>
     </html>
   );

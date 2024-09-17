@@ -77,7 +77,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
       />
 
       {/* DETALHES DO PRODUTO */}
-      <div className="w-full flex flex-col gap-3">
+      <div className="w-full flex flex-col sm:gap-3">
 
         {/* NOME DO PRODUTO */}
         <p className="font-bold text-sm">{name}</p>

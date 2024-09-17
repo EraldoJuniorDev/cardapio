@@ -104,7 +104,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
             {/* NOME DO PRODUTO */}
             <p className="w-32 font-bold text-sm flex items-center justify-center text-center">{name} ({type})</p>
 
-            <p className="text-white bg-[#BF0404] py-1 px-2 rounded">Indisponível</p>
+            <p className="text-white text-sm bg-[#BF0404] py-1 px-2 rounded">Indisponível</p>
 
           </div>
         )}
