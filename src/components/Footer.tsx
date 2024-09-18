@@ -5,16 +5,23 @@ import { FaCartPlus } from "react-icons/fa";
 import Modal from "./Modal";
 import Cart from "@/app/data/cartList/cart";
 
+function checkRestaurantOpen() {
+  const data = new Date();
+  const hora = data.getHours();
+  return hora >= 18 && hora < 22;
+}
+
 export default function Footer() {
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isRestaurantOpen, setIsRestaurantOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(checkRestaurantOpen());
 
   useEffect(() => {
-    const currentHour = new Date().getHours();
-    const openingHour = 18; // 6 PM
-    const closingHour = 22; // 10 PM
+    const intervalId = setInterval(() => {
+      setIsOpen(checkRestaurantOpen());
+    }, 60000);
 
-    setIsRestaurantOpen(currentHour >= openingHour && currentHour <= closingHour);
+    return () => clearInterval(intervalId);
   }, []);
 
   const CartItemCounter = (cart: any[]) => {
@@ -32,7 +39,7 @@ export default function Footer() {
   }
 
   return (
-    isRestaurantOpen && (
+
       <footer className="w-full h-11 bg-[#BF0404] hover:bg-[#cf3434] fixed bottom-0 z-40 flex justify-center rounded-t-2xl">
         {/* BOTÃO DE ABRIR O MODAL */}
         <button
@@ -48,6 +55,6 @@ export default function Footer() {
         </button>
         <Modal isOpen={modalIsOpen} onClose={handleOpenModal} />
       </footer>
-    )
-  );
+      
+      )
 }

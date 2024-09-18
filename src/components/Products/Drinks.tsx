@@ -12,10 +12,6 @@ export interface ProductProps {
   quantity: number;
 }
 
-function HandleId(id: number): number {
-  return id;
-}
-
 function checkRestaurantOpen() {
   const data = new Date();
   const hora = data.getHours();
@@ -41,17 +37,14 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
       const name = parentButton.getAttribute("data-name");
       const price = parseFloat(parentButton.getAttribute("data-price"));
 
-      // Find existing item based on name and type
       const existingItem = Cart.find(item => item.name === name && item.type === type);
 
       if (existingItem) {
-        existingItem.quantity += 1; // Increment quantity for existing item
+        existingItem.quantity += 1;
       } else {
-        // Create a new item with a unique identifier based on name and type
-        const uniqueId = `${name}-${type}-${Date.now()}`;
-        const uniqueIdString = parseFloat(uniqueId);// Combine name, type, and timestamp
+
         Cart.push({
-          id: uniqueIdString,
+          id,
           name,
           price,
           quantity: 1,
@@ -65,6 +58,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
 
   return (
     <div className="w-full xl:w-72 flex items-center rounded bg-gray-100 shadow-inner">
+
       {/* IMAGEM DO PRODUTO */}
       <Image
         className="w-28 rounded hover:scale-105 hover:-rotate-2 duration-300 m-3"
@@ -76,49 +70,70 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
 
       {/* DETALHES DO PRODUTO */}
 
-        {isOpen ? (
-          <div className="w-full flex flex-col gap-12">
-            {/* NOME DO PRODUTO */}
-            <p className="font-bold text-sm">{name} ({type})</p>
+      {isOpen ? (
+        <div className="w-full h-full flex flex-col justify-evenly">
 
-            <div className="flex items-center gap-2 justify-between mt-3 pr-3">
-              {/* PREÇO DO PRODUTO */}
-              <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              })}</p>
+          {/* NOME DO PRODUTO */}
+          <p className="font-bold text-sm">{name} ({type})</p>
 
-              {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
-              <button
-                onClick={handleCartItem}
-                className="bg-green-600 px-2 rounded add-to-cart-btn"
-                data-name={name}
-                data-price={price}
-              >
-                <FaCartPlus className="text-xl lg:text-2xl text-white py-1" />
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div className="w-full flex flex-col items-center justify-center text-center ">
-            {/* NOME DO PRODUTO */}
-            <p className="w-32 font-bold text-sm flex items-center justify-center text-center">{name} ({type})</p>
+          <div className="w-full flex items-center gap-2 justify-between mt-3 pr-3">
 
-            <div className="w-full flex flex-col gap-2 justify-between mt-3 pr-3 sm:justify-center">
+            {/* PREÇO DO PRODUTO */}
+            <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+            </p>
 
-              {/* PREÇO DO PRODUTO */}
-              <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}</p>
-              <p className="text-white text-sm bg-[#BF0404] py-1 px-2 rounded">Indisponível</p>
-            </div>
+            {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
+            <button
+              onClick={handleCartItem}
+              className="bg-green-600 px-2 rounded add-to-cart-btn"
+              data-name={name}
+              data-price={price}
+            >
+              <FaCartPlus className="text-xl lg:text-2xl text-white py-1" />
+            </button>
 
           </div>
-        )}
+
+        </div>
+
+      ) : (
+        <div className="w-full h-full flex flex-col justify-evenly">
+
+          {/* NOME DO PRODUTO */}
+          <p className="font-bold text-sm">{name} ({type})</p>
+
+          <div className="w-full flex items-center gap-2 justify-between mt-3 pr-3">
+
+            {/* PREÇO DO PRODUTO */}
+            <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+            </p>
+
+            {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
+            <button
+              onClick={handleCartItem}
+              className="bg-[#BF0404] px-2 rounded add-to-cart-btn"
+              data-name={name}
+              data-price={price}
+            >
+              <FaCartPlus className="text-xl lg:text-2xl text-white py-1" />
+            </button>
+
+          </div>
+
+        </div>
+
+      )}
 
     </div>
+
   );
+
 };
 
 export default Product;

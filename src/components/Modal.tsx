@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { CgCloseO } from "react-icons/cg";
 import CartItems from "../components/Cart/CartItems";
 import Cart from "../app/data/cartList/cart";
@@ -14,7 +15,24 @@ function handleTotal() {
     return { total, formattedPrice };
 }
 
+function checkRestaurantOpen() {
+    const data = new Date();
+    const hora = data.getHours();
+    return hora >= 18 && hora < 22;
+}
+
 export default function Modal({ isOpen, onClose }: ModalProps) {
+
+    const [adress, setAdress] = useState("");
+    const [isRestaurantOpen, setIsRestaurantOpen] = useState(checkRestaurantOpen());
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setIsRestaurantOpen(checkRestaurantOpen());
+        }, 60000);
+
+        return () => clearInterval(intervalId);
+    }, []);
 
     if (!isOpen) return null;
 
@@ -29,10 +47,26 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 onClick={onClose}></div>
 
             {/* CONTAINER DO MODAL */}
-            <div className="bg-white h-fit pb-4 rounded-3xl min-w-[90%] md:min-w-[600px] absolute " onKeyDown={onClose}>
+            <div className="bg-white h-fit flex flex-col gap-1 pb-4 rounded-3xl min-w-[90%] md:min-w-[600px] absolute " onKeyDown={onClose}>
 
                 {/* CABEÇALHO DO MODAL */}
-                <div className=" bg-[#BF0404] p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
+
+                {isRestaurantOpen ? (
+                    
+                    <div className="bg-green-600 p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
+
+                    <h2 className="text-center font-bold text-base m-3">Meu Carrinho</h2>
+
+                    {/* BOTÃO DE FECHAR MODAL */}
+                    <button
+                        className="text-2xl py-1 px-4"
+                        id="close-modal-btn"
+                        onClick={onClose}><CgCloseO className="hover:scale-125 hover:duration-200" /></button>
+                </div>
+
+                ) : (
+
+                    <div className="bg-[#ff1616] p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
 
                     <h2 className="text-center font-bold text-base m-3">Meu Carrinho</h2>
 
@@ -43,6 +77,8 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                         onClick={onClose}><CgCloseO className="hover:scale-125 hover:duration-200" /></button>
                 </div>
 
+                )}
+
                 {/* ITENS DO CARRINHO */}
                 {Cart.length > 0 && (
                     <div className="flex justify-between gap-1 overflow-scroll overflow-x-hidden max-h-96 mb-2 flex-col sm:m-5 rounded-base" id="cart-items">
@@ -50,19 +86,23 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     </div>
                 )}
                 {Cart.length === 0 && (
-                    <p className="text-[#BF0404] text-lg h-24 gap-2 flex items-center justify-center">Seu carrinho está vazio! <PiEmptyBold /></p>
+                    <p className="bg-gray-100 text-[#ff1212] shadow-inner text-lg h-24 gap-2 flex items-center justify-center">Seu carrinho está vazio! <PiEmptyBold /></p>
                 )}
 
                 {/* CONTEUDO DO MODAL */}
                 <div className="px-4 flex flex-col gap-1">
 
-                    <p className="text-sm font-bold">Endereço de Entrega:</p>
-
                     {/* INPUT DO ENDEREÇO DE ENTREGA */}
-                    <input type="text"
+                    <label htmlFor="adress">Endereço de Entrega:</label>
+
+                    <input
+                        type="text"
                         placeholder="Digite seu endereço completo..."
                         id="adress"
-                        className="text-sm w-full border-2 rounded my-1 pl-[5px] py-1" />
+                        name="adress"
+                        value={adress}
+                        className="text-sm bg-gray-100 w-full border-none rounded my-1 p-2 shadow-inner"
+                        onChange={(e) => setAdress(e.target.value)} />
 
                     {/* AVISO DE ENDEREÇO DE ENTREGA VAZIO */}
                     <p className="text-red-500 hidden" id="adress-warn">Digite seu endereço completo!</p>
@@ -74,7 +114,17 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 {/* BOTÃO DE FINALIZAR COMPRA */}
                 <div className="flex items-center justify-center mt-5 w-full">
 
-                    <button className="font-sm w-80 bg-[#BF0404] hover:scale-105 hover:duration-200 text-white px-4 py-1 rounded-3xl" id="checkout-btn">Finalizar pedido</button>
+                    {isRestaurantOpen ? (
+
+                        <button className="font-sm w-80 bg-green-600 hover:scale-105 hover:duration-200 text-white px-4 py-1 rounded-3xl" id="checkout-btn">
+                            Finalizar pedido
+                        </button>
+
+                    ) : (
+
+                        <button className="font-sm w-80 bg-[#BF0404] hover:scale-105 hover:duration-200 text-white px-4 py-1 rounded-3xl" id="checkout-btn">Agendar Pedido</button>
+
+                    )}
 
                 </div>
 

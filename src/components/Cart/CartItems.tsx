@@ -6,11 +6,11 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix
 
 export default function CartItems() {
 
-    const handleDeleteItem = (productId: number) => {
+    const handleDeleteItem = (itemId: number) => {
 
-        const updatedCart = Cart.filter((item) => item.id !== productId);
+        const updatedCart = Cart.filter((item) => item.id !== itemId);
 
-        console.log(productId)
+        Cart.splice(itemId)
 
 
     };

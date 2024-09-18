@@ -77,7 +77,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
       />
 
       {/* DETALHES DO PRODUTO */}
-      <div className="w-full flex flex-col sm:gap-2">
+      <div className="w-full flex flex-col gap-1">
 
         {/* NOME DO PRODUTO */}
         <p className="font-bold text-sm">{name}</p>
@@ -85,7 +85,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
         {/* RENDERIZA NOME E TIPO SE AMBOS EXISTIREM */}
         <p>
           {type && (
-            <div className="flex items-center sm:gap-2">
+            <div className="flex items-center">
               <h2 className="w-24 sm:w-fit font-bold text-sm whitespace-nowrap overflow-hidden text-ellipsis">
                 {name}
               </h2>
@@ -97,7 +97,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
         </p>
 
         {/* DESCRIÇÃO DO PRODUTO */}
-        <p className="text-sm text-balance">{description}</p>
+        <p className="w-[90%] text-xs">{description}</p>
 
         <div className="flex items-center gap-2 justify-between mt-3 pr-3">
 
@@ -122,9 +122,16 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
 
           ) : (
 
-            <p className="text-white bg-[#BF0404] text-sm py-1 px-2 rounded shadow-inner">
-              Indisponível
-            </p>
+            <button
+            onClick={handleCartItem}
+            className="bg-[#BF0404] px-2 rounded add-to-cart-btn"
+            data-name={name}
+            data-price={price}
+            >
+
+            <FaCartPlus className="text-xl lg:text-2xl text-white py-1" />
+          </button>
+
           )}
 
         </div>
