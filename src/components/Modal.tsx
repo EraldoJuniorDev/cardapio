@@ -3,6 +3,8 @@ import { CgCloseO } from "react-icons/cg";
 import CartItems from "../components/Cart/CartItems";
 import Cart from "../app/data/cartList/cart";
 import { PiEmptyBold } from "react-icons/pi";
+import { ImLocation } from "react-icons/im";
+import { IoCalendarOutline } from "react-icons/io5";
 
 interface ModalProps {
     isOpen?: boolean;
@@ -52,30 +54,30 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 {/* CABEÇALHO DO MODAL */}
 
                 {isRestaurantOpen ? (
-                    
+
                     <div className="bg-green-600 p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
 
-                    <h2 className="text-center font-bold text-base m-3">Meu Carrinho</h2>
+                        <h2 className="text-center font-bold text-base m-3">Meu Carrinho</h2>
 
-                    {/* BOTÃO DE FECHAR MODAL */}
-                    <button
-                        className="text-2xl py-1 px-4"
-                        id="close-modal-btn"
-                        onClick={onClose}><CgCloseO className="hover:scale-125 hover:duration-200" /></button>
-                </div>
+                        {/* BOTÃO DE FECHAR MODAL */}
+                        <button
+                            className="text-2xl py-1 px-4"
+                            id="close-modal-btn"
+                            onClick={onClose}><CgCloseO className="hover:scale-125 hover:duration-200" /></button>
+                    </div>
 
                 ) : (
 
                     <div className="bg-[#BF0404] p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
 
-                    <h2 className="text-center font-bold text-base m-3">Meu Carrinho</h2>
+                        <h2 className="text-center font-bold text-base m-3">Meu Carrinho</h2>
 
-                    {/* BOTÃO DE FECHAR MODAL */}
-                    <button
-                        className="text-2xl py-1 px-4 "
-                        id="close-modal-btn"
-                        onClick={onClose}><CgCloseO className="hover:scale-125 hover:duration-200" /></button>
-                </div>
+                        {/* BOTÃO DE FECHAR MODAL */}
+                        <button
+                            className="text-2xl py-1 px-4 "
+                            id="close-modal-btn"
+                            onClick={onClose}><CgCloseO className="hover:scale-125 hover:duration-200" /></button>
+                    </div>
 
                 )}
 
@@ -93,7 +95,8 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 <div className="px-4 flex flex-col gap-1">
 
                     {/* INPUT DO ENDEREÇO DE ENTREGA */}
-                    <label htmlFor="adress">Endereço de Entrega:</label>
+                    <label className="flex items-center text-center gap-2" htmlFor="adress"><ImLocation />
+                        Endereço de Entrega:</label>
 
                     <input
                         type="text"
@@ -122,7 +125,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
                     ) : (
 
-                        <button className="font-sm w-80 bg-[#BF0404] hover:scale-105 hover:duration-200 text-white px-4 py-1 rounded-3xl" id="checkout-btn">Agendar Pedido</button>
+                        <button className="font-sm w-80 flex items-center justify-center gap-3 bg-[#BF0404] hover:scale-105 hover:duration-200 text-white px-4 py-1 rounded-3xl" id="checkout-btn">Agendar Pedido <IoCalendarOutline /></button>
 
                     )}
 

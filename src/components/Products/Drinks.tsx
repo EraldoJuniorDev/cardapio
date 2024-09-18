@@ -2,6 +2,8 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FaCartPlus } from "react-icons/fa";
 import Cart from "../../app/data/cartList/cart";
+import { IoCalendarOutline } from "react-icons/io5";
+import { toast } from "@/hooks/use-toast";
 
 export interface ProductProps {
   id: number;
@@ -87,12 +89,24 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
 
             {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
             <button
-              onClick={handleCartItem}
-              className="bg-green-600 px-2 rounded add-to-cart-btn"
-              data-name={name}
-              data-price={price}
+              onClick={() => {
+                toast({
+                  title: "Adicionado ao seu carinho com sucesso!",
+                  description: (
+                    <span>
+                      Você adicionou <span className="font-bold text-green-600">{name}</span> de{" "}
+                      <span className="font-bold text-green-600">{type}</span> ao seu carrinho.
+                    </span>
+                  ),
+                })
+              }}
             >
-              <FaCartPlus className="text-xl lg:text-2xl text-white py-1" />
+
+              <FaCartPlus
+                onClick={handleCartItem}
+                className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
+                data-name={name}
+                data-price={price} />
             </button>
 
           </div>
@@ -116,12 +130,24 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
 
             {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
             <button
-              onClick={handleCartItem}
-              className="bg-[#BF0404] px-2 rounded add-to-cart-btn"
-              data-name={name}
-              data-price={price}
+              onClick={() => {
+                toast({
+                  title: "Adicionado ao seu carinho com sucesso para Agendamento!",
+                  description: (
+                    <span>
+                      Você adicionou <span className="font-bold  text-green-600">{name}</span> de{" "}
+                      <span className="font-bold  text-green-600">{type}</span> ao seu carrinho.
+                    </span>
+                  ),
+                })
+              }}
             >
-              <FaCartPlus className="text-xl lg:text-2xl text-white py-1" />
+
+              <FaCartPlus
+                onClick={handleCartItem}
+                className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
+                data-name={name}
+                data-price={price} />
             </button>
 
           </div>

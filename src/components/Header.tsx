@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Footer from "./Footer"; // Assuming Footer is in the same directory
+import Footer from "./Footer";
+import { PiClockCountdownBold } from "react-icons/pi";
 
 function checkRestaurantOpen() {
   const data = new Date();
@@ -61,7 +62,7 @@ export default function Header() {
           {isOpen ? (
             <span className="text-white bg-green-600 py-1 px-2 rounded">Aberto</span>
           ) : (
-            <span className="text-white bg-[#BF0404] py-1 px-2 rounded">Fechado</span>
+            <span className="text-white flex items-center gap-2 bg-[#BF0404] py-1 px-2 rounded">Fechado <PiClockCountdownBold /></span>
           )}
 
         </div>
