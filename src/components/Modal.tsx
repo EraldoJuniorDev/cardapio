@@ -66,7 +66,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
                 ) : (
 
-                    <div className="bg-[#ff1616] p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
+                    <div className="bg-[#BF0404] p-[2px] text-white border-b-2 border-gray-200 rounded-t-3xl flex items-center justify-between w-full">
 
                     <h2 className="text-center font-bold text-base m-3">Meu Carrinho</h2>
 
