@@ -86,7 +86,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     </div>
                 )}
                 {Cart.length === 0 && (
-                    <p className="bg-gray-100 text-[#ff1212] shadow-inner text-lg h-24 gap-2 flex items-center justify-center">Seu carrinho está vazio! <PiEmptyBold /></p>
+                    <p className="bg-gray-100 text-[#BF0404] shadow-inner text-lg h-24 gap-2 flex items-center justify-center">Seu carrinho está vazio! <PiEmptyBold /></p>
                 )}
 
                 {/* CONTEUDO DO MODAL */}
