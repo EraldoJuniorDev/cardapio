@@ -5,6 +5,14 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
 
+
+interface LayoutProps {
+  children?: React.ReactNode;
+  params?: any;
+  isOpen: boolean;
+}
+
+
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700']
@@ -15,19 +23,18 @@ export const metadata: Metadata = {
   description: "O melhor da cidade",
 };
 
-export default function RootLayout({
-  children,
-  isOpen // Receive isOpen as a prop
-}: Readonly<{
-  children: React.ReactNode;
-  isOpen: boolean;
-}>) {
+export default function RootLayout({ children, isOpen }: LayoutProps) {
+
   return (
+
     <html lang="pt-br">
+
       <body className={roboto.className}>
+
         <Header />
+
         {children}
-        {/* Render Footer conditionally based on isOpen from Header */}
+
         {isOpen && <Footer />}
       </body>
     </html>

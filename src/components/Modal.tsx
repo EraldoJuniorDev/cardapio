@@ -45,7 +45,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
                 {/* ITENS DO CARRINHO */}
                 {Cart.length > 0 && (
-                    <div className="flex justify-between gap-1 overflow-scroll overflow-x-hidden max-h-96 mb-2 flex-col sm:m-5 rounded-base scrollbar scrollbar-thumb-gray-900 scrollbar-track-red-500 scrollbar-medium" id="cart-items">
+                    <div className="flex justify-between gap-1 overflow-scroll overflow-x-hidden max-h-96 mb-2 flex-col sm:m-5 rounded-base" id="cart-items">
                         <CartItems/>
                     </div>
                 )}

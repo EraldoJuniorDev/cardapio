@@ -17,11 +17,11 @@ export default function CartItems() {
 
     return (
 
-        <div className="shadow-2xl rounded flex flex-col p-1 gap-3 sm:p-3">
+        <div className="shadow-2xl rounded flex flex-col p-1 gap-3 sm:p-3 sm:bg-gray-300">
 
             {Cart.map((handleCartItem) => (
 
-                <div key={handleCartItem.id} className="flex items-center justify-around text-center w-full py-2 px-4 shadow-inner bg-gray-100 rounded">
+                <div key={handleCartItem.id} className="flex items-center justify-between text-center w-full py-2 px-4 shadow-inner bg-gray-100 rounded">
 
                     {/* IMAGEM DO PRODUTO */}
                     <Image
@@ -53,7 +53,7 @@ export default function CartItems() {
                                 {/* RENDERIZA NOME E TIPO SE AMBOS EXISTIREM */}
                                 {handleCartItem.type && (
 
-                                    <div className="flex items-center sm:gap-2">
+                                    <div className="flex flex-col items-center">
 
                                         <h2 className="w-24 sm:w-fit font-bold text-sm whitespace-nowrap overflow-hidden text-ellipsis">
 
