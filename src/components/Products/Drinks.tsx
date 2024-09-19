@@ -136,7 +136,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
               <button
                 onClick={() => {
                   toast({
-                    title: "Adicionado para Agendamento com sucesso!",
+                    title: "Adicionado para Agendamento.",
                     description: (
                       <span>
                         Você adicionou <span className="font-bold">{name}</span> de <span className="font-bold">{type}</span> ao seu carrinho.

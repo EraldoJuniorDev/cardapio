@@ -5,27 +5,14 @@ import { FaCartPlus } from "react-icons/fa";
 import Modal from "./Modal";
 import Cart from "@/app/data/cartList/cart";
 
-function checkRestaurantOpen() {
-  const data = new Date();
-  const hora = data.getHours();
-  return hora >= 18 && hora < 22;
-}
-
 export default function Footer() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(checkRestaurantOpen());
-  const [cartItemCount, setCartItemCount] = useState(Cart.length);
+  const [countCart, setCountCart] = useState(0);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setIsOpen(checkRestaurantOpen());
-      setCartItemCount(Cart.length);
-    }, 60000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
+    setCountCart(Cart.length);
+  }, [countCart]);
 
 
   function handleOpenModal() {
@@ -42,7 +29,7 @@ export default function Footer() {
         onClick={handleOpenModal}
       >
         {/* CONTADOR DE ITENS DO CARRINHO */}
-        <span id="cart-count">({cartItemCount})</span>
+        <span id="cart-count">({countCart})</span>
         Meu carinho
         {/* ÍCONE DO BOTÃO DE ABRIR O MODAL */}
         <FaCartPlus className="text-2xl py-1" />

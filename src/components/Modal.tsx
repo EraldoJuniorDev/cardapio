@@ -95,7 +95,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 <div className="px-4 flex flex-col gap-1">
 
                     {/* INPUT DO ENDEREÇO DE ENTREGA */}
-                    <label className="flex items-center text-center gap-2" htmlFor="adress"><ImLocation />
+                    <label className="flex items-center text-center gap-2" htmlFor="adress"><ImLocation className="text-[#BF0404]"/>
                         Endereço de Entrega:</label>
 
                     <input

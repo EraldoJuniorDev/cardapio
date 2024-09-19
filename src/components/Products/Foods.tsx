@@ -4,6 +4,7 @@ import { FaCartPlus } from "react-icons/fa";
 import Cart from "../../app/data/cartList/cart";
 import { IoCalendarOutline } from "react-icons/io5";
 import { toast } from "@/hooks/use-toast";
+import { FiCheckCircle } from "react-icons/fi";
 
 export interface ProductProps {
   id: number;
@@ -119,54 +120,54 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
                 onClick={() => {
                   toast({
                     title: "Adicionado ao seu carinho com sucesso!",
-                    description: (
-                      <span>
-                        Você adicionou <span className="font-bold">{name}</span> ao seu carrinho.
-                      </span>
-                    ),
+          description: (
+          <span>
+            Você adicionou <span className="font-bold">{name}</span> ao seu carrinho.
+          </span>
+          ),
                   })
                 }}
               >
 
-                <FaCartPlus
-                  onClick={handleCartItem}
-                  className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
-                  data-name={name}
-                  data-price={price} />
-              </button>
+          <FaCartPlus
+            onClick={handleCartItem}
+            className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
+            data-name={name}
+            data-price={price} />
+        </button>
 
-            ) :
+        ) :
 
-            // DETALHES DO PRODUTO SE O RESTAURENTE ESTIVER FECHADO
-            (
+        // DETALHES DO PRODUTO SE O RESTAURENTE ESTIVER FECHADO
+        (
 
-              <button
-                onClick={() => {
-                  toast({
-                    title: "Adicionado para Agendamento com sucesso!",
-                    description: (
-                      <span>
-                        Você adicionou <span className="font-bold">{name}</span> ao seu carrinho.
-                      </span>
-                    ),
-                  })
-                }}
-              >
+        <button
+          onClick={() => {
+            toast({
+              title: "Adicionado para Agendamento.",
+              description: (
+                <span>
+                  Você adicionou <span className="font-bold">{name}</span> ao seu carrinho.
+                </span>
+              ),
+            })
+          }}
+        >
 
-                <IoCalendarOutline
-                  onClick={handleCartItem}
-                  className="bg-[#BF0404] px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
-                  data-name={name}
-                  data-price={price} />
-              </button>
+          <IoCalendarOutline
+            onClick={handleCartItem}
+            className="bg-[#BF0404] px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
+            data-name={name}
+            data-price={price} />
+        </button>
 
             )}
-
-        </div>
 
       </div>
 
     </div>
+
+    </div >
 
   );
 

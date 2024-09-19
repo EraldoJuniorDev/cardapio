@@ -9,6 +9,7 @@ import {
   ToastTitle,
   ToastViewport,
 } from "@/components/ui/toast"
+import { FaCheckCircle } from "react-icons/fa";
 
 export function Toaster() {
   const { toasts } = useToast()
@@ -20,9 +21,9 @@ export function Toaster() {
           <Toast
           key={id}
           {...props}
-          className="text-center sm:text-left shadow-inner">
-            <div className="w-full grid gap-1">
-              {title && <ToastTitle className="text-green-600">{title}</ToastTitle>}
+          className="bg-green-600 text-white shadow-inner">
+            <div className="w-full grid gap-3">
+              {title && <ToastTitle className="flex flex-row items-center text-base gap-2"><FaCheckCircle/>{title}</ToastTitle>}
               {description && (
                 <ToastDescription>{description}</ToastDescription>
               )}
