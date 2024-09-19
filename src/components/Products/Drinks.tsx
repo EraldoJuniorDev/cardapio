@@ -70,91 +70,94 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
         height={128}
       />
 
-      {/* DETALHES DO PRODUTO */}
+      {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
+      {isOpen ?
 
-      {isOpen ? (
-        <div className="w-full h-full flex flex-col justify-evenly">
+        // DETALHES DO PRODUTO SE O RESTAURENTE ESTIVER ABERTO
+        (
+          <div className="w-full h-full flex flex-col justify-evenly">
 
-          {/* NOME DO PRODUTO */}
-          <p className="font-bold text-sm">{name} ({type})</p>
+            {/* NOME DO PRODUTO */}
+            <p className="font-bold text-sm">{name} ({type})</p>
 
-          <div className="w-full flex items-center gap-2 justify-between mt-3 pr-3">
+            <div className="w-full flex items-center gap-2 justify-between mt-3 pr-3">
 
-            {/* PREÇO DO PRODUTO */}
-            <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
-              style: 'currency',
-              currency: 'BRL',
-            })}
-            </p>
+              {/* PREÇO DO PRODUTO */}
+              <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+              </p>
 
-            {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
-            <button
-              onClick={() => {
-                toast({
-                  title: "Adicionado ao seu carinho com sucesso!",
-                  description: (
-                    <span>
-                      Você adicionou <span className="font-bold text-green-600">{name}</span> de{" "}
-                      <span className="font-bold text-green-600">{type}</span> ao seu carrinho.
-                    </span>
-                  ),
-                })
-              }}
-            >
+              {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
+              <button
+                onClick={() => {
+                  toast({
+                    title: "Adicionado ao seu carinho com sucesso!",
+                    description: (
+                      <span>
+                        Você adicionou <span className="font-bold">{name}</span> de <span className="font-bold">{type}</span> ao seu carrinho.
+                      </span>
+                    ),
+                  })
+                }}
+              >
 
-              <FaCartPlus
-                onClick={handleCartItem}
-                className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
-                data-name={name}
-                data-price={price} />
-            </button>
+                <FaCartPlus
+                  onClick={handleCartItem}
+                  className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
+                  data-name={name}
+                  data-price={price} />
+              </button>
 
-          </div>
-
-        </div>
-
-      ) : (
-        <div className="w-full h-full flex flex-col justify-evenly">
-
-          {/* NOME DO PRODUTO */}
-          <p className="font-bold text-sm">{name} ({type})</p>
-
-          <div className="w-full flex items-center gap-2 justify-between mt-3 pr-3">
-
-            {/* PREÇO DO PRODUTO */}
-            <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
-              style: 'currency',
-              currency: 'BRL',
-            })}
-            </p>
-
-            {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
-            <button
-              onClick={() => {
-                toast({
-                  title: "Adicionado ao seu carinho com sucesso para Agendamento!",
-                  description: (
-                    <span>
-                      Você adicionou <span className="font-bold  text-green-600">{name}</span> de{" "}
-                      <span className="font-bold  text-green-600">{type}</span> ao seu carrinho.
-                    </span>
-                  ),
-                })
-              }}
-            >
-
-              <FaCartPlus
-                onClick={handleCartItem}
-                className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
-                data-name={name}
-                data-price={price} />
-            </button>
+            </div>
 
           </div>
 
-        </div>
+        ) :
 
-      )}
+        // DETALHES DO PRODUTO SE O RESTAURENTE ESTIVER FECHADO
+        (
+          <div className="w-full h-full flex flex-col justify-evenly">
+
+            {/* NOME DO PRODUTO */}
+            <p className="font-bold text-sm">{name} ({type})</p>
+
+            <div className="w-full flex items-center gap-2 justify-between mt-3 pr-3">
+
+              {/* PREÇO DO PRODUTO */}
+              <p className="font-bold text-sm">{price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+              </p>
+
+              {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
+              <button
+                onClick={() => {
+                  toast({
+                    title: "Adicionado para Agendamento com sucesso!",
+                    description: (
+                      <span>
+                        Você adicionou <span className="font-bold">{name}</span> de <span className="font-bold">{type}</span> ao seu carrinho.
+                      </span>
+                    ),
+                  })
+                }}
+              >
+
+                <IoCalendarOutline
+                  onClick={handleCartItem}
+                  className="bg-[#BF0404] px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
+                  data-name={name}
+                  data-price={price} />
+              </button>
+
+            </div>
+
+          </div>
+
+        )}
 
     </div>
 
