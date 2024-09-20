@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaCheckCircle } from "react-icons/fa";
 import Cart from "../../app/data/cartList/cart";
 import { IoCalendarOutline } from "react-icons/io5";
 import { toast } from "@/hooks/use-toast";
@@ -39,22 +39,41 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
       const name = parentButton.getAttribute("data-name");
       const price = parseFloat(parentButton.getAttribute("data-price"));
 
-      const existingItem = Cart.find(item => item.name === name && item.type === type);
+      const existingItem = Cart.find(item => item.id === id)
 
       if (existingItem) {
-        existingItem.quantity += 1;
+        toast({
+          variant: "destructive",
+          title: "Erro ao adicionar ao carrinho.",
+          description: (
+            <span>
+              <span className="font-bold">{name}</span> de <span className="font-bold">{type}</span> já está no seu carrinho.
+            </span>
+          ),
+        });
       } else {
+
+        toast({
+          title: "Adicionado ao carrinho.",
+          description: (
+            <span>
+              <span className="font-bold">{name}</span> de <span className="font-bold">{type}</span> foi adicionado ao seu carrinho.
+            </span>
+          ),
+        });
 
         Cart.push({
           id,
+          image,
           name,
           price,
-          quantity: 1,
-          image,
           type,
+          quantity: 1
         });
       }
-      console.log(Cart);
+
+
+
     }
   };
 
@@ -90,24 +109,14 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
               </p>
 
               {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
-              <button
-                onClick={() => {
-                  toast({
-                    title: "Adicionado ao seu carinho com sucesso!",
-                    description: (
-                      <span>
-                        Você adicionou <span className="font-bold">{name}</span> de <span className="font-bold">{type}</span> ao seu carrinho.
-                      </span>
-                    ),
-                  })
-                }}
-              >
+              <button>
 
                 <FaCartPlus
                   onClick={handleCartItem}
                   className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
                   data-name={name}
                   data-price={price} />
+
               </button>
 
             </div>
@@ -133,24 +142,14 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
               </p>
 
               {/* BOTÃO DE ADICIONAR PRODUTO AO CARRINHO */}
-              <button
-                onClick={() => {
-                  toast({
-                    title: "Adicionado para Agendamento.",
-                    description: (
-                      <span>
-                        Você adicionou <span className="font-bold">{name}</span> de <span className="font-bold">{type}</span> ao seu carrinho.
-                      </span>
-                    ),
-                  })
-                }}
-              >
+              <button>
 
                 <IoCalendarOutline
                   onClick={handleCartItem}
                   className="bg-[#BF0404] px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
                   data-name={name}
                   data-price={price} />
+
               </button>
 
             </div>

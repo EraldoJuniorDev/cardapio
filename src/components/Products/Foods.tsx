@@ -5,6 +5,7 @@ import Cart from "../../app/data/cartList/cart";
 import { IoCalendarOutline } from "react-icons/io5";
 import { toast } from "@/hooks/use-toast";
 import { FiCheckCircle } from "react-icons/fi";
+import { Toaster } from "../ui/toaster";
 
 export interface ProductProps {
   id: number;
@@ -45,23 +46,37 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
       const name = parentButton.getAttribute("data-name");
       const price = parseFloat(parentButton.getAttribute("data-price"));
 
-      const existingItem = Cart.find(item => item.name === name)
+      const existingItem = Cart.find(item => item.id === id)
 
       if (existingItem) {
-        existingItem.quantity += 1;
-      }
+        toast({
+          variant: "destructive",
+          title: "Erro ao adicionar ao carrinho.",
+          description: (
+            <span>
+              <span className="font-bold">{name}</span> já está no seu carrinho.
+            </span>
+          ),
+        });
+      } else {
 
-      else {
-        Cart.push(
-          {
-            id: HandleId(id),
-            image,
-            name,
-            price,
-            quantity: 1,
-            type
-          })
-        console.log(Cart)
+        toast({
+          title: "Adicionado ao carrinho.",
+          description: (
+            <span>
+              <span className="font-bold">{name}</span> foi adicionado ao seu carrinho.
+            </span>
+          ),
+        });
+
+        Cart.push({
+          id,
+          image,
+          name,
+          price,
+          type,
+          quantity: 1
+        });
       }
     }
 
@@ -116,56 +131,36 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
             // DETALHES DO PRODUTO SE O RESTAURENTE ESTIVER ABERTO
             (
 
-              <button
-                onClick={() => {
-                  toast({
-                    title: "Adicionado ao seu carinho com sucesso!",
-          description: (
-          <span>
-            Você adicionou <span className="font-bold">{name}</span> ao seu carrinho.
-          </span>
-          ),
-                  })
-                }}
-              >
+              <button>
 
-          <FaCartPlus
-            onClick={handleCartItem}
-            className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
-            data-name={name}
-            data-price={price} />
-        </button>
+                <FaCartPlus
+                  onClick={handleCartItem}
+                  className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
+                  data-name={name}
+                  data-price={price} />
+                  
+              </button>
 
-        ) :
+            ) :
 
-        // DETALHES DO PRODUTO SE O RESTAURENTE ESTIVER FECHADO
-        (
+            // DETALHES DO PRODUTO SE O RESTAURENTE ESTIVER FECHADO
+            (
 
-        <button
-          onClick={() => {
-            toast({
-              title: "Adicionado para Agendamento.",
-              description: (
-                <span>
-                  Você adicionou <span className="font-bold">{name}</span> ao seu carrinho.
-                </span>
-              ),
-            })
-          }}
-        >
+              <button>
 
-          <IoCalendarOutline
-            onClick={handleCartItem}
-            className="bg-[#BF0404] px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
-            data-name={name}
-            data-price={price} />
-        </button>
+                <IoCalendarOutline
+                  onClick={handleCartItem}
+                  className="bg-[#BF0404] px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
+                  data-name={name}
+                  data-price={price} />
+
+              </button>
 
             )}
 
-      </div>
+        </div>
 
-    </div>
+      </div>
 
     </div >
 

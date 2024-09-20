@@ -49,7 +49,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 onClick={onClose}></div>
 
             {/* CONTAINER DO MODAL */}
-            <div className="bg-white h-fit flex flex-col gap-1 pb-4 rounded-3xl min-w-[90%] md:min-w-[600px] absolute " onKeyDown={onClose}>
+            <div className="bg-white h-fit flex flex-col gap-1 pb-4 rounded-3xl min-w-[90%] md:min-w-[600px] absolute ">
 
                 {/* CABEÇALHO DO MODAL */}
 

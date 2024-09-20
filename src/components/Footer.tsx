@@ -8,11 +8,15 @@ import Cart from "@/app/data/cartList/cart";
 export default function Footer() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [countCart, setCountCart] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    setCountCart(Cart.length);
-  }, [countCart]);
+    const interval = setInterval(() => {
+      setCartCount(Cart.length);
+    }, 10);
+
+    return () => clearInterval(interval);
+  }, []);
 
 
   function handleOpenModal() {
@@ -29,7 +33,7 @@ export default function Footer() {
         onClick={handleOpenModal}
       >
         {/* CONTADOR DE ITENS DO CARRINHO */}
-        <span id="cart-count">({countCart})</span>
+        <span id="cart-count">({cartCount})</span>
         Meu carinho
         {/* ÍCONE DO BOTÃO DE ABRIR O MODAL */}
         <FaCartPlus className="text-2xl py-1" />
@@ -38,4 +42,8 @@ export default function Footer() {
     </footer>
 
   )
+}
+
+function setCountCart(length: number) {
+  throw new Error("Function not implemented.");
 }

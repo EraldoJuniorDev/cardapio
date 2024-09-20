@@ -10,7 +10,7 @@ export default function CartItems() {
 
         const updatedCart = Cart.filter((item) => item.id !== itemId);
 
-        Cart.splice(itemId)
+        console.log(itemId)
 
 
     };
