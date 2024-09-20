@@ -44,10 +44,10 @@ const Product: React.FC<ProductProps> = ({ id, image, name, price, type }: Produ
       if (existingItem) {
         toast({
           variant: "destructive",
-          title: "Erro ao adicionar ao carrinho.",
+          title: `Erro ao adicionar ao carrinho.`,
           description: (
             <span>
-              <span className="font-bold">{name}</span> de <span className="font-bold">{type}</span> já está no seu carrinho.
+              <span className="font-bold">{name}</span> de <span className="font-bold">{type}</span> já existe no seu carrinho.
             </span>
           ),
         });

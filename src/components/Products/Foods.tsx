@@ -51,10 +51,10 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
       if (existingItem) {
         toast({
           variant: "destructive",
-          title: "Erro ao adicionar ao carrinho.",
+          title: `Erro ao adicionar ao carrinho.`,
           description: (
             <span>
-              <span className="font-bold">{name}</span> já está no seu carrinho.
+              <span className="font-bold">{name}</span> já existe no seu carrinho.
             </span>
           ),
         });
@@ -138,7 +138,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
                   className="bg-green-600 px-2 w-full rounded add-to-cart-btn text-xl lg:text-2xl text-white py-1"
                   data-name={name}
                   data-price={price} />
-                  
+
               </button>
 
             ) :
