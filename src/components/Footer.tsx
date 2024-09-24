@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { FaCartPlus } from "react-icons/fa";
-import Modal from "./Modal";
+import Modal from "./CartModal";
 import Cart from "@/app/data/cartList/cart";
 
 export default function Footer() {

@@ -4,8 +4,6 @@ import { FaCartPlus } from "react-icons/fa";
 import Cart from "../../app/data/cartList/cart";
 import { IoCalendarOutline } from "react-icons/io5";
 import { toast } from "@/hooks/use-toast";
-import { FiCheckCircle } from "react-icons/fi";
-import { Toaster } from "../ui/toaster";
 
 export interface ProductProps {
   id: number;
@@ -77,6 +75,7 @@ const Product: React.FC<ProductProps> = ({ id, image, name, description, price, 
           type,
           quantity: 1
         });
+        console.log(Cart)
       }
     }
 

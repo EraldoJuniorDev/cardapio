@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FaCartPlus } from "react-icons/fa";
+
 interface ProductParams {
     productImage: string
     productName: string
