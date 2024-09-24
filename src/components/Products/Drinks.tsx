@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { FaCartPlus, FaCheckCircle } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa";
 import Cart from "../../app/data/cartList/cart";
 import { IoCalendarOutline } from "react-icons/io5";
 import { toast } from "@/hooks/use-toast";
